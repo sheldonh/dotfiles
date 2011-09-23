@@ -1,0 +1,32 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+
+if ! type -p __gitdir; then
+	if [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
+fi
+
+function setps1()
+{
+	if [ -n "$GITPS1" -a -n "$NORMALPS1" ] && __gitdir >/dev/null; then
+		PS1="$GITPS1"
+	else
+		PS1="$NORMALPS1"
+	fi
+	export PS1
+}
+
+function cd()
+{
+	builtin cd $@
+	setps1
+}

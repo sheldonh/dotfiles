@@ -1,0 +1,11 @@
+[core]
+	excludesfile = /home/sheldonh/.gitignore
+[user]
+	name = Sheldon Hearn
+	email = sheldonh@starjuice.net
+[color]
+	ui = auto
+[alias]
+	unadd = reset HEAD
+[push]
+	default = tracking

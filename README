@@ -1,0 +1,5 @@
+Configuration files to pleasurize my terminal experience.
+
+cd $HOME
+git clone git://github.com/sheldonh/dotfiles.git .dotfiles
+.dotfiles/setup.sh

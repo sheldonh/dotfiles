@@ -30,3 +30,5 @@ function cd()
 	builtin cd $@
 	setps1
 }
+
+if [ -x /usr/share/vim/vim73/macros/less.sh ]; then alias view='/usr/share/vim/vim73/macros/less.sh'; fi

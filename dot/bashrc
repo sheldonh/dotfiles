@@ -7,7 +7,9 @@ fi
 
 # User specific aliases and functions
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+if [ -d $HOME/.rbenv/shims ] && ! echo $PATH | grep -q rbenv/shims; then
+	eval "$($HOME/.rbenv/bin/rbenv init -)"
+fi
 
 if ! type -p __gitdir; then
 	if [ -f /etc/bash_completion ]; then

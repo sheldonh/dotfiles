@@ -23,3 +23,7 @@ setps1
 if [ -f ~/.gistrc ]; then
 	. ~/.gistrc
 fi
+
+if [ -d $HOME/.rbenv/bin ] && ! echo $PATH | grep -q rbenv/bin; then
+	export PATH="$HOME/.rbenv/bin:$PATH"
+fi

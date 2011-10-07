@@ -7,8 +7,6 @@ fi
 
 # User specific aliases and functions
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
 if ! type -p __gitdir; then
 	if [ -f /etc/bash_completion ]; then
 		. /etc/bash_completion

@@ -8,4 +8,4 @@
 [alias]
 	unadd = reset HEAD
 [push]
-	default = tracking
+	default = current

@@ -24,10 +24,5 @@ if [ -f ~/.gistrc ]; then
 	. ~/.gistrc
 fi
 
-if [ -d ~/.rbenv/shims ] && ! echo $PATH | grep -q rbenv/shims; then
-	if [ -d ~/.rbenv/bin ] && ! echo $PATH | grep -q rbenv/bin; then
-		export PATH="~/.rbenv/bin:$PATH"
-	fi
-	eval "$(rbenv init -)"
-fi
-
+export PATH="~/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

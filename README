@@ -4,8 +4,17 @@ Configuration files to pleasurize my terminal experience.
 	git clone git://github.com/sheldonh/dotfiles.git .dotfiles
 	.dotfiles/setup.sh
 
+Sadly, Gnome Terminal blows away the %gconf symlink that setup.sh
+creates. I've found no way of making it portable.
+
 Most of this exists to provide a beautiful environment within which
 to use vim as a Ruby editor.  The vim config itself is in a separate
 repository:
 
 	https://github.com/sheldonh/dotvim
+
+Note that rbenv was designed by Mac-heads, so the rbenv support in
+.bash_profile only works if the terminal emulator is configured to
+simulate a login shell.  See
+
+	https://github.com/sstephenson/rbenv/issues/122#issuecomment-2683820

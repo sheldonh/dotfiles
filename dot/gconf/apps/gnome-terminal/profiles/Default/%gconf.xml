@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <gconf>
+	<entry name="login_shell" mtime="1316760193" type="bool" value="true"/>
 	<entry name="scrollback_lines" mtime="1308127147" type="int" value="512"/>
 	<entry name="scrollbar_position" mtime="1316760193" type="string">
 		<stringvalue>hidden</stringvalue>

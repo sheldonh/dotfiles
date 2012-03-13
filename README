@@ -12,9 +12,3 @@ to use vim as a Ruby editor.  The vim config itself is in a separate
 repository:
 
 	https://github.com/sheldonh/dotvim
-
-Note that rbenv was designed by Mac-heads, so the rbenv support in
-.bash_profile only works if the terminal emulator is configured to
-simulate a login shell.  See
-
-	https://github.com/sstephenson/rbenv/issues/122#issuecomment-2683820

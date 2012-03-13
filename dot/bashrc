@@ -16,17 +16,12 @@ fi
 function setps1()
 {
 	if [ -n "$GITPS1" -a -n "$NORMALPS1" ] && __gitdir >/dev/null; then
-		PS1="$GITPS1"
+		export PS1="$GITPS1"
 	else
-		PS1="$NORMALPS1"
+		export PS1="$NORMALPS1"
 	fi
-	export PS1
-}
-
-function cd()
-{
-	builtin cd $@
-	setps1
 }
 
 if [ -x /usr/share/vim/vim73/macros/less.sh ]; then alias view='/usr/share/vim/vim73/macros/less.sh'; fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

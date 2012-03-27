@@ -25,3 +25,6 @@ setps1
 if [ -f ~/.gistrc ]; then
 	. ~/.gistrc
 fi
+
+export USE_BUNDLER=force
+export BUNDLER_BLACKLIST="cheat heroku"

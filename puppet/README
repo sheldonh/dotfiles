@@ -1,0 +1,10 @@
+Experiment to keep workstation configuration under puppet control.
+
+The goal is to have PGP-encrypted stuff even.  For now, I'm just
+capturing the extra packages I've installed since setting up my
+user.
+
+	yum install -y rubygems
+	gem install --no-ri --no-rdoc puppet
+	useradd --system --user-group --no-create-home --uid 52 puppet
+	puppet apply --modulepath modules --verbose manifests/axl.pp

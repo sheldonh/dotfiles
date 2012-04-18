@@ -36,3 +36,7 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
   mode => '0755',
   require => Users::Rvm['sheldonh'],
 }
+
+users::gconfs { 'sheldonh':
+  confs => [ 'gnome-terminal' ],
+}

@@ -15,6 +15,9 @@ users::dotfiles { 'sheldonh':
   files => [
     'bashrc',
     'bash_profile',
+    'gemrc',
+    'gitconfig',
+    'gitignore',
   ],
 }
 

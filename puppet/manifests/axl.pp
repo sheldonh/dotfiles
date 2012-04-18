@@ -12,5 +12,16 @@ package { 'xchat': ensure => installed }
 user { 'sheldonh': }
 users::rvm { 'sheldonh': }
 users::dotfiles { 'sheldonh':
-  files => [ 'gistrc' ]
+  files => [
+             'bashrc',
+             'bash_profile',
+             'gistrc',
+             'rvm/hooks/after_cd_setps1',
+           ],
+}
+
+exec { 'enable-rvm-hooks':
+  command => 'chmod +x /home/sheldonh/.rvm/hooks/after_cd /home/sheldonh/.rvm/hooks/after_cd_setps1',
+  unless  => '[ -x /home/sheldonh/.rvm/hooks/after_cd_setps1 ]',
+  require => Users::Dotfiles['sheldonh'],
 }

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+type -p setps1 && setps1

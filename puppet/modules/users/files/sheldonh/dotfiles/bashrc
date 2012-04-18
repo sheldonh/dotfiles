@@ -1,0 +1,27 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# User specific aliases and functions
+
+if ! type -p __gitdir; then
+	if [ -f /etc/bash_completion ]; then
+		. /etc/bash_completion
+	fi
+fi
+
+function setps1()
+{
+	if [ -n "$GITPS1" -a -n "$NORMALPS1" ] && __gitdir >/dev/null; then
+		export PS1="$GITPS1"
+	else
+		export PS1="$NORMALPS1"
+	fi
+}
+
+if [ -x /usr/share/vim/vim73/macros/less.sh ]; then alias view='/usr/share/vim/vim73/macros/less.sh'; fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

@@ -18,6 +18,7 @@ users::dotfiles { 'sheldonh':
     'gemrc',
     'gitconfig',
     'gitignore',
+    'ssh/config',
   ],
 }
 

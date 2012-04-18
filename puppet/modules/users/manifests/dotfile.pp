@@ -5,7 +5,7 @@ define users::dotfile($user, $home, $mode) {
     owner  => $user,
     group  => $user,
     mode   => $mode,
-    source => ["puppet:///modules/users/$user/dotfiles/$name.enc", "puppet:///modules/users/$user/dotfiles/$name"],
+    source => ["puppet:///modules/users/$user/dotfiles/$name.md", "puppet:///modules/users/$user/dotfiles/$name"],
   }
 
 }

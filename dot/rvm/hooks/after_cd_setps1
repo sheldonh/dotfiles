@@ -1,3 +1,0 @@
-#!/bin/bash
-
-type -p setps1 &>/dev/null && setps1

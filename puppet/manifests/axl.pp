@@ -13,15 +13,23 @@ user { 'sheldonh': }
 users::rvm { 'sheldonh': }
 users::dotfiles { 'sheldonh':
   files => [
-             'bashrc',
-             'bash_profile',
-             'gistrc',
-             'rvm/hooks/after_cd_setps1',
-           ],
+    'bashrc',
+    'bash_profile',
+  ],
 }
 
-exec { 'enable-rvm-hooks':
-  command => 'chmod +x /home/sheldonh/.rvm/hooks/after_cd /home/sheldonh/.rvm/hooks/after_cd_setps1',
-  unless  => '[ -x /home/sheldonh/.rvm/hooks/after_cd_setps1 ]',
-  require => Users::Dotfiles['sheldonh'],
+users::dotfile { 'gistrc':
+  user => sheldonh,
+  mode => '0600',
+}
+
+users::dotfile { 'rvm/hooks/after_cd_setps1':
+  user => sheldonh,
+  mode => '0755',
+  require => Users::Rvm['sheldonh'],
+}
+
+file { '/home/sheldonh/.rvm/hooks/after_cd':
+  mode => '0755',
+  require => Users::Rvm['sheldonh'],
 }

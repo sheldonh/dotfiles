@@ -1,4 +1,4 @@
-define users::dotfiles($files = [], $home = "/home/$name", $mode = '0600') {
+define users::dotfiles($files = [], $home = "/home/$name", $mode = '0644') {
 
   users::dotfile{ $files:
     user => $name,

@@ -1,4 +1,4 @@
-define users::dotfile($user, $home, $mode) {
+define users::dotfile($user, $home = "/home/$user", $mode = '0644') {
 
   file { $name:
     path   => "$home/.$name",

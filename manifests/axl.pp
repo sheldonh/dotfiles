@@ -5,6 +5,7 @@ Exec {
 
 include kerberos
 include vagrant
+include vpn::hetzner
 
 package { 'git': ensure => installed }
 package { 'graphviz': ensure => installed }
@@ -12,6 +13,7 @@ package { 'vim-enhanced': ensure => installed }
 package { 'xchat': ensure => installed }
 
 user { 'sheldonh': }
+
 users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':
   files => [
@@ -23,7 +25,6 @@ users::dotfiles { 'sheldonh':
     'ssh/config',
   ],
 }
-
 users::dotfile { 'gistrc':
   user => sheldonh,
   mode => '0600',

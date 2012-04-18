@@ -1,4 +1,4 @@
-define users::rvm($home = "/home/$name") {
+define users::rvm($home = "/home/$name", $gems = []) {
 
   $user = $name
   $install = "install-rvm-for-$user"
@@ -28,5 +28,16 @@ define users::rvm($home = "/home/$name") {
     creates  => "$home/.rvm",
   }
 
-  #exec { "install-ruby-for-$user": ... }
+  users::gem { $gems:
+    user    => $user,
+    home    => $home,
+    require => Exec[$install],
+  }
+
+  exec { "install-ruby-for-$user":
+    command  => "su -s /bin/bash - $user -c 'rvm install --default ruby'",
+    creates  => "$home/.rvm/rubies/default",
+    require  => Users::Gem[$gems],
+  }
+
 }

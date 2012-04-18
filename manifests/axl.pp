@@ -1,5 +1,6 @@
 Exec {
-  path => '/bin:/sbin:/usr/bin:/usr/sbin',
+  path    => '/bin:/sbin:/usr/bin:/usr/sbin',
+  timeout => 0,
 }
 
 include kerberos
@@ -11,7 +12,7 @@ package { 'vim-enhanced': ensure => installed }
 package { 'xchat': ensure => installed }
 
 user { 'sheldonh': }
-users::rvm { 'sheldonh': }
+users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':
   files => [
     'bashrc',

@@ -12,5 +12,5 @@ package { 'xchat': ensure => installed }
 user { 'sheldonh': }
 users::rvm { 'sheldonh': }
 users::dotfiles { 'sheldonh':
-  files => [ '.gistrc' ]
+  files => [ 'gistrc' ]
 }

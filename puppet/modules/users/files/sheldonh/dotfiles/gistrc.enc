@@ -1,3 +1,0 @@
-export GIST_PRIVATE=true
-export GITHUB_USER=sheldonh
-export GITHUB_PASSWORD='secret'

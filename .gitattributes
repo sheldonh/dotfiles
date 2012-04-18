@@ -1,0 +1,1 @@
+*.enc filter=gpg diff=gpg

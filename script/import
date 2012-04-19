@@ -1,0 +1,5 @@
+#!/bin/sh
+
+$(dirname $0)/import-dotfiles
+$(dirname $0)/import-gconfs
+git status

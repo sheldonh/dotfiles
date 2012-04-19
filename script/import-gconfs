@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd $(dirname $0)/../modules/users/files/$USER/gconfs || exit 1
+for i in $(find . -type f); do
+	d=${i#./}
+	a=$(sed -n -e 's%^[[:space:]]*<entrylist base="\(.*\)">%\1%p' < $d)
+	echo $a
+	gconftool-2 --dump $a > $d
+done

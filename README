@@ -19,4 +19,4 @@ As myself
   cd dotfiles
   gpg --decrypt < gitencrypt.tar.asc | tar -C ~ -xf -
   cat gitconfig-gitencrypt >> .git/config
-  sudo puppet apply --modulepath modules --verbose manifests/axl.pp
+  sh script/apply

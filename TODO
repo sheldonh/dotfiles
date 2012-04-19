@@ -1,4 +1,7 @@
 Figure out how to configure apps to use a dictionary from hunspell-en
 	* empathy
 	* evolution
-Figure out how to add lastpass and a dictionary to firefox
+Figure out how to install addons for firefox:
+	* lastpass
+	* dictionary
+	* firebug

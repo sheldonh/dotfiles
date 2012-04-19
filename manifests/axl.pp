@@ -5,7 +5,7 @@ Exec {
 
 include kerberos
 include media::mp3
-include skype
+if $hostname != "wrink" { include skype }
 include vagrant
 include vpn::hetzner
 

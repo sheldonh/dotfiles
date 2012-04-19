@@ -1,5 +1,6 @@
 # .bash_profile
 
+PATH=$PATH:/opt/vagrant/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 export PATH=$PATH:~/bin
 

@@ -5,6 +5,7 @@ Exec {
 
 include kerberos
 include media::mp3
+include skype
 include vagrant
 include vpn::hetzner
 

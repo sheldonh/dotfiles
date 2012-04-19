@@ -46,5 +46,5 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
 }
 
 users::gconfs { 'sheldonh':
-  confs => [ 'gnome-terminal' ],
+  confs => [ 'gnome-terminal', 'metacity' ],
 }

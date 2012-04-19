@@ -8,6 +8,7 @@ include media::mp3
 include vagrant
 include vpn::hetzner
 
+package { 'hunspell-en': ensure => installed }
 package { 'git': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'icedtea-web': ensure => installed }

@@ -3,6 +3,9 @@ Exec {
   timeout => 0,
 }
 
+include hetzner::aaapi
+include hetzner::hetzner_api
+include hetzner::konsoleh
 include kerberos
 include media::mp3
 if $hostname != "wrink" { include skype }

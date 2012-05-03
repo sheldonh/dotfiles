@@ -8,7 +8,6 @@ include hetzner::hetzner_api
 include hetzner::konsoleh
 include kerberos
 include media::mp3
-if $hostname != "wrink" { include skype }
 include vagrant
 include vpn::hetzner
 
@@ -18,6 +17,15 @@ package { 'graphviz': ensure => installed }
 package { 'icedtea-web': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'xchat': ensure => installed }
+
+if $domain == "hetzner.africa" {
+  include skype
+
+  mount::cifs { '/media/linsh/stuff':
+    user   => 'linsh',
+    device => '//linsh/stuff',
+  }
+}
 
 user { 'sheldonh': }
 
@@ -52,9 +60,3 @@ users::gconfs { 'sheldonh':
   confs => [ 'gnome-terminal', 'metacity' ],
 }
 
-if $domain == "hetzner.africa" {
-  mount::cifs { '/media/linsh/stuff':
-    user   => 'linsh',
-    device => '//linsh/stuff',
-  }
-}

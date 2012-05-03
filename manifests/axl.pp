@@ -7,6 +7,7 @@ include hetzner::aaapi
 include hetzner::hetzner_api
 include hetzner::konsoleh
 include kerberos
+include media::flash
 include media::mp3
 include vagrant
 include vpn::hetzner

@@ -26,6 +26,7 @@ define mount::cifs($user, $device, $credential = $user) {
 
   mount { $name:
     ensure  => mounted,
+    atboot  => true,
     fstype  => cifs,
     device  => $device,
     options => "rw,user=$user,credentials=${credential_path},uid=0,gid=0",

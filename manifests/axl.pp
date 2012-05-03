@@ -51,3 +51,10 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
 users::gconfs { 'sheldonh':
   confs => [ 'gnome-terminal', 'metacity' ],
 }
+
+if $domain == "hetzner.africa" {
+  mount::cifs { '/media/linsh/stuff':
+    user   => 'linsh',
+    device => '//linsh/stuff',
+  }
+}

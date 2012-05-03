@@ -15,6 +15,7 @@ package { 'hunspell-en': ensure => installed }
 package { 'git': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'icedtea-web': ensure => installed }
+package { 'swaks': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'xchat': ensure => installed }
 

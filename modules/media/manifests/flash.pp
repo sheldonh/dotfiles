@@ -2,6 +2,7 @@ class media::flash {
 
   exec { 'adobe-release-repo':
     command => 'yum install -y http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm',
+    creates => '/etc/yum.repos.d/adobe-linux-x86_64.repo',
   }
 
   if !defined( Package['alsa-plugins-pulseaudio'] ) { package { 'alsa-plugins-pulseaudio': ensure => installed } }

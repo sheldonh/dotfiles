@@ -28,6 +28,13 @@ if $domain == "hetzner.africa" {
     user   => 'linsh',
     device => '//linsh/stuff',
   }
+
+  cups::printer { '2600n':
+    driver         => '/usr/share/cups/model/HP-Color_LaserJet_1600.ppd.gz',
+    driver_package => 'foo2hp',
+    address        => '192.168.0.248',
+    cups_default   => true,
+  }
 }
 
 user { 'sheldonh': }

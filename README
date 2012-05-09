@@ -19,4 +19,5 @@ As myself
   cd dotfiles
   gpg --decrypt < gitencrypt.tar.asc | tar -C ~ -xf -
   cat gitconfig-gitencrypt >> .git/config
+  git checkout HEAD -- .
   sh script/apply

@@ -9,6 +9,7 @@ include hetzner::konsoleh
 include kerberos
 include media::flash
 include media::mp3
+include media::rar
 include vagrant
 include vpn::hetzner
 

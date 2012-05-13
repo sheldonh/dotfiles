@@ -7,3 +7,5 @@ Figure out how to install addons for firefox:
 	* firebug
 	* nosquint
 	* pinboard-extension
+Figure out how to install Dropbox without Zenity prompts and automate
+daemon install.

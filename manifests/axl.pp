@@ -21,6 +21,7 @@ package { 'icedtea-web': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
+package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
 
 if $domain == "hetzner.africa" {

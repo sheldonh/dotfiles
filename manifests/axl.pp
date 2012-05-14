@@ -3,6 +3,7 @@ Exec {
   timeout => 0,
 }
 
+include google_talk
 include hetzner::aaapi
 include hetzner::hetzner_api
 include hetzner::konsoleh

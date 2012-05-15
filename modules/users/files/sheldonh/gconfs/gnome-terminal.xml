@@ -362,7 +362,7 @@
       <key>profiles/Default/default_size_rows</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/default_size_rows</schema_key>
       <value>
-        <int>36</int>
+        <int>34</int>
       </value>
     </entry>
     <entry>

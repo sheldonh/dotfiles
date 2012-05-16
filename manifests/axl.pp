@@ -19,6 +19,7 @@ package { 'git': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }
 package { 'icedtea-web': ensure => installed }
+package { 'rdesktop': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }

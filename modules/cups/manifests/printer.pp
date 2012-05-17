@@ -7,9 +7,9 @@ define cups::printer($driver, $driver_package = false, $address, $cups_default =
   }
 
   if $cups_default {
-    $command = "lpadmin -p $name -v socket://$address/ -P $driver && lpadmin -d $name"
+    $command = "lpadmin -p $name -v socket://$address/ -P $driver -E && lpadmin -d $name"
   } else {
-    $command = "lpadmin -p $name -v socket://$address/ -P $driver"
+    $command = "lpadmin -p $name -v socket://$address/ -P $driver -E"
   }
 
   exec { "add-printer-$name":

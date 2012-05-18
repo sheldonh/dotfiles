@@ -9,6 +9,7 @@ include hetzner::aaapi
 include hetzner::hetzner_api
 include hetzner::konsoleh
 include kerberos
+include kvm
 include media::flash
 include media::mp3
 include media::pdf
@@ -28,8 +29,6 @@ package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
-
-package { ['qemu-system-x86', 'libvirt', 'virt-manager']: ensure => installed }
 
 if $domain == "hetzner.africa" {
   include skype

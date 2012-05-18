@@ -45,6 +45,13 @@ if $domain == "hetzner.africa" {
     cups_default   => true,
   }
 }
+if $fqdn == "axl.hearnlan" {
+
+  mount::ntfs { '/media/windows':
+    device => '/dev/sda2',
+  }
+
+}
 
 user { 'sheldonh': }
 

@@ -3,7 +3,8 @@ Exec {
   timeout => 0,
 }
 
-include google_talk
+# google-talkplugin crashing Firefox
+#include google_talk
 include hetzner::aaapi
 include hetzner::hetzner_api
 include hetzner::konsoleh
@@ -21,11 +22,14 @@ package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }
 package { 'icedtea-web': ensure => installed }
 package { 'rdesktop': ensure => installed }
+package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
+
+package { ['qemu-system-x86', 'libvirt', 'virt-manager']: ensure => installed }
 
 if $domain == "hetzner.africa" {
   include skype
@@ -45,6 +49,7 @@ if $domain == "hetzner.africa" {
 
 user { 'sheldonh': }
 
+users::rpmbuild { 'sheldonh': }
 users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':
   files => [

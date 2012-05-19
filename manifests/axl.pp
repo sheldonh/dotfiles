@@ -30,7 +30,7 @@ package { 'vim-enhanced': ensure => installed }
 package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
 
-if $domain == "hetzner.africa" {
+if $domain == 'hetzner.africa' {
   include skype
 
   mount::cifs { '/media/linsh/stuff':
@@ -45,7 +45,7 @@ if $domain == "hetzner.africa" {
     cups_default   => true,
   }
 }
-if $fqdn == "axl.hearnlan" {
+if $fqdn == 'axl.hearnlan' {
 
   mount::ntfs { '/media/windows':
     device => '/dev/sda2',
@@ -79,13 +79,13 @@ users::dotfile { 'gistrc':
 }
 
 users::dotfile { 'rvm/hooks/after_cd_setps1':
-  user => sheldonh,
-  mode => '0755',
+  user    => sheldonh,
+  mode    => '0755',
   require => Users::Rvm['sheldonh'],
 }
 
 file { '/home/sheldonh/.rvm/hooks/after_cd':
-  mode => '0755',
+  mode    => '0755',
   require => Users::Rvm['sheldonh'],
 }
 

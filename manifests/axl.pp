@@ -51,6 +51,12 @@ if $fqdn == "axl.hearnlan" {
     device => '/dev/sda2',
   }
 
+  cups::printer { 'X422':
+    driver         => 'http://www.cups.org/ppd/lexmark/lexx422.ppd.gz',
+    address        => '10.0.0.129',
+    cups_default   => true,
+  }
+
 }
 
 user { 'sheldonh': }

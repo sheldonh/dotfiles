@@ -19,7 +19,7 @@ class vpn::hetzner {
     owner  => root,
     group  => root,
     mode   => '0600',
-    source => "puppet:///modules/vpn/$label/${label}.md",
+    source => "puppet:///modules/vpn/$label/${label}.enc",
     require => Package['NetworkManager-openvpn'],
   }
 
@@ -34,21 +34,21 @@ class vpn::hetzner {
     owner  => $user,
     group  => $group,
     mode   => '0644',
-    source => "puppet:///modules/vpn/$label/${ca}.md",
+    source => "puppet:///modules/vpn/$label/${ca}.enc",
   }
 
   file { "$certs/$cert":
     owner  => $user,
     group  => $group,
     mode   => '0644',
-    source => "puppet:///modules/vpn/$label/${cert}.md",
+    source => "puppet:///modules/vpn/$label/${cert}.enc",
   }
 
   file { "$certs/$key":
     owner  => $user,
     group  => $group,
     mode   => '0600',
-    source => "puppet:///modules/vpn/$label/${key}.md",
+    source => "puppet:///modules/vpn/$label/${key}.enc",
   }
 
 }

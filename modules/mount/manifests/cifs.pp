@@ -19,7 +19,7 @@ define mount::cifs($user, $device, $credential = $user) {
 
   if !defined( File[$credential_path] ) {
     file { $credential_path:
-      source  => [ "puppet:///modules/mount/cifs/${credential}.credential.md",
+      source  => [ "puppet:///modules/mount/cifs/${credential}.credential.enc",
                    "puppet:///modules/mount/cifs/${credential}.credential" ],
     }
   }

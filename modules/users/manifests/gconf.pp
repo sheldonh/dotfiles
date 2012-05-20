@@ -16,7 +16,7 @@ define users::gconf($user, $group = $user, $home = "/home/$user") {
     owner   => $user,
     group   => $group,
     mode    => '0700',
-    source  => [ "puppet:///modules/users/$user/gconfs/$filename.md", "puppet:///modules/users/$user/gconfs/$filename" ],
+    source  => [ "puppet:///modules/users/$user/gconfs/$filename.enc", "puppet:///modules/users/$user/gconfs/$filename" ],
     require => File[$dumps],
   }
 

@@ -460,7 +460,7 @@
       <key>profiles/Default/silent_bell</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/silent_bell</schema_key>
       <value>
-        <bool>false</bool>
+        <bool>true</bool>
       </value>
     </entry>
     <entry>

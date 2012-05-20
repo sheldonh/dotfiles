@@ -21,7 +21,7 @@ define users::gconf($user, $group = $user, $home = "/home/$user") {
   }
 
   exec { "load-gconf-$name":
-    command     => "gconftool-2 --load $dumps/$filename",
+    command     => "su -l $user -c 'gconftool-2 --load $dumps/$filename'",
     refreshonly => true,
     subscribe   => File["$dumps/$filename"],
   }

@@ -1,1 +1,2 @@
 *.md filter=openssl diff=openssl
+*.enc filter=openssl diff=openssl

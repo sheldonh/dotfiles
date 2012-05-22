@@ -22,6 +22,7 @@ package { 'git': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }
 package { 'icedtea-web': ensure => installed }
+package { 'pssh': ensure => installed }
 package { 'rdesktop': ensure => installed }
 package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }

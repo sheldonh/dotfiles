@@ -93,3 +93,7 @@ users::gconfs { 'sheldonh':
   confs => [ 'gnome-terminal', 'metacity' ],
 }
 
+# Services that slow the boot process for no benefit to me
+
+service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }
+

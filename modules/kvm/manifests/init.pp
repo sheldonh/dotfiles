@@ -4,4 +4,6 @@ class kvm {
 
   service { 'libvirtd': enable => true }
 
+  Package['libvirt'] -> Service['libvirtd']
+
 }

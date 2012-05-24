@@ -28,4 +28,4 @@ if [ -f ~/.gistrc ]; then
 fi
 
 export USE_BUNDLER=force
-export BUNDLER_BLACKLIST="cheat heroku"
+export BUNDLER_BLACKLIST="cheat gist heroku"

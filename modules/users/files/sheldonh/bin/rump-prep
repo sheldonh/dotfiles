@@ -1,0 +1,34 @@
+#!/bin/sh -ex
+
+host=$1
+user=${LOGNAME}
+
+cd ${HOME}
+
+if [ ! -f .ssh/id_dsa_rump -o ! -f .ssh/id_dsa_rump.pub ]; then
+	echo "You need .ssh/id_dsa_rump and .ssh/id_dsa_rump.pub for this to work"
+	exit 1
+fi
+
+ssh ${host} "gem install --no-ri --no-rdoc rump"
+ssh ${host} "ln -fs /var/lib/gems/1.8/bin/rump /usr/local/bin/"
+ssh ${host} "aptitude install -y git-core"
+
+tmpdir=$(mktemp -t -d rump-prep.XXXXXX)
+scp puppetmaster1.cpt1.host-h.net:/root/rump-prep.tar ${tmpdir}/
+
+cp .gitconfig ${tmpdir}/
+mkdir ${tmpdir}/.ssh
+cp -p .ssh/id_dsa ${tmpdir}/.ssh/id_dsa
+cp -p .ssh/id_dsa.pub ${tmpdir}/.ssh/id_dsa.pub
+echo "StrictHostKeyChecking no" > ${tmpdir}/.ssh/config
+cd ${tmpdir}
+tar -rf rump-prep.tar .gitconfig .ssh
+cd ..
+
+scp ${tmpdir}/rump-prep.tar ${host}:/home/${user}/
+rm -rf ${tmpdir}
+
+ssh ${host} "chown ${user} /home/${user}/rump-prep.tar"
+ssh ${host} "su -l ${user} -c 'tar -xf rump-prep.tar .gitconfig .ssh'"
+ssh ${host} "su -l ${user} -c 'tar -xf rump-prep.tar puppet'"

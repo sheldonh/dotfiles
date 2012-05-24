@@ -95,6 +95,8 @@ users::gconfs { 'sheldonh':
   confs => [ 'gnome-terminal', 'metacity' ],
 }
 
+users::script { 'sheldonh/rump-prep': }
+
 # Services that slow the boot process for no benefit to me
 
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }

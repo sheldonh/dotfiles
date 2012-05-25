@@ -18,6 +18,7 @@ include vagrant
 include vpn::hetzner
 
 package { 'clusterssh': ensure => installed }
+package { 'gimp': ensure => installed }
 package { 'git': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }

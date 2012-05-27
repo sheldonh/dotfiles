@@ -37,6 +37,7 @@ package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
 
 nodejs::package { 'coffee-script': ensure => installed }
+nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
   include skype

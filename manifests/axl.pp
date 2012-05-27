@@ -14,7 +14,6 @@ include media::flash
 include media::mp3
 include media::pdf
 include media::rar
-include rubymine
 include vagrant
 include vpn::hetzner
 
@@ -104,7 +103,8 @@ users::gconfs { 'sheldonh':
 
 users::script { 'sheldonh/rump-prep': }
 
-# Services that slow the boot process for no benefit to me
+rubymine::user { 'sheldonh': }
 
+# Services that slow the boot process for no benefit to me
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }
 

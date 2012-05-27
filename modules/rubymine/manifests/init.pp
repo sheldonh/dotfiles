@@ -1,6 +1,8 @@
 class rubymine {
 
   $version = '4.0.3'
+  $userdir = '.RubyMine40'
+  $keyfile = 'rubymine40.key'
 
   exec { 'install-rubymine':
     command => "curl -L http://download.jetbrains.com/ruby/RubyMine-${version}.tar.gz | tar -C /usr/local -xzf -",

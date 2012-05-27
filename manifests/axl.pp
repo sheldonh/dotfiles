@@ -31,8 +31,11 @@ package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
+package { 'whois': ensure => installed }
 package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
+
+nodejs::package { 'coffee-script': ensure => installed }
 
 if $domain == 'hetzner.africa' {
   include skype

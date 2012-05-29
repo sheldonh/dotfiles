@@ -33,6 +33,7 @@ package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'whois': ensure => installed }
+package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
 package { 'xchat': ensure => installed }
 

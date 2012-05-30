@@ -15,6 +15,7 @@ include media::flash
 include media::mp3
 include media::pdf
 include media::rar
+include mongodb
 include vagrant
 include vpn::hetzner
 

@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cd $(dirname $0)/.. && sudo puppet apply --modulepath modules --verbose $* manifests/axl.pp
+cd $(dirname $0)/.. && sudo /usr/local/bin/puppet apply --modulepath modules --verbose $* manifests/axl.pp

@@ -42,7 +42,8 @@ nodejs::package { 'coffee-script': ensure => installed }
 nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
-  include skype
+  # Living without it, to encourage walking around
+  #include skype
 
   mount::cifs { '/media/linsh/stuff':
     user   => 'linsh',

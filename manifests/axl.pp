@@ -45,6 +45,8 @@ if $domain == 'hetzner.africa' {
   # Living without it, to encourage walking around
   #include skype
 
+  package { 'gmpc': ensure => installed }
+
   mount::cifs { '/media/linsh/stuff':
     user   => 'linsh',
     device => '//linsh/stuff',

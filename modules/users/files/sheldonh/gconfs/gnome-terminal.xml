@@ -373,6 +373,13 @@
       </value>
     </entry>
     <entry>
+      <key>profiles/Default/encoding</key>
+      <schema_key>/schemas/apps/gnome-terminal/profiles/Default/encoding</schema_key>
+      <value>
+        <string>current</string>
+      </value>
+    </entry>
+    <entry>
       <key>profiles/Default/exit_action</key>
       <schema_key>/schemas/apps/gnome-terminal/profiles/Default/exit_action</schema_key>
       <value>

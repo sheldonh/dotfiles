@@ -1,6 +1,7 @@
 Figure out how to configure apps to use a dictionary from hunspell-en
 	* empathy
 	* evolution
+
 Figure out how to install addons for firefox:
 	* lastpass
 	* dictionary
@@ -8,5 +9,12 @@ Figure out how to install addons for firefox:
 	* nosquint
 	* pinboard-extension
 	* readability
+
 Figure out how to install Dropbox without Zenity prompts and automate
 daemon install.
+
+Figure out how to
+	* enable User Themes Extension,
+	* configure Adwaita Cupertino L as GTK+ and Window theme, and
+	* configure DefaultMod as GNOME Shell theme.
+	<<Check out dconf>>

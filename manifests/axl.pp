@@ -22,8 +22,11 @@ include vagrant
 include vpn::hetzner
 
 package { 'clusterssh': ensure => installed }
+package { 'gconf-editor': ensure => installed }
 package { 'gimp': ensure => installed }
 package { 'git': ensure => installed }
+package { 'gnome-shell-extension-user-theme': ensure => installed }
+package { 'gnome-tweak-tool': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }
 package { 'icedtea-web': ensure => installed }

@@ -1,3 +1,10 @@
 #!/bin/sh
 
-cd $(dirname $0)/.. && sudo /usr/local/bin/puppet apply --modulepath modules --verbose $* manifests/axl.pp
+for path in /usr/local/bin /usr/bin; do
+	if [ -x $path/puppet ]; then
+		puppet=$path/puppet
+	fi
+done
+puppet=${puppet:=puppet}
+
+cd $(dirname $0)/.. && sudo $puppet apply --modulepath modules --verbose $* manifests/axl.pp

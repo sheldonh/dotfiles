@@ -1,0 +1,140 @@
+#!/bin/sh
+
+get_addresses() {
+	host $1 | awk '$3 == "address" {print $4}'
+}
+
+get_hostnames() {
+	if echo $* | grep -q '[A-Za-z]'; then
+		addresses=$(get_addresses $1)
+	else
+		addresses="$*"
+	fi
+	for address in $addresses; do
+		for name in $(host $address | awk '{print $5}'); do
+			echo ${name%.}
+		done
+	done
+}
+
+is_canonical() {
+	echo $1 | grep -Eq '^(backup|dedi|manage|www|manage)[[:digit:]]'
+}
+
+is_fully_qualified() {
+	host=$1
+	if [ $host != ${host%.} ]; then
+		return 0
+	fi
+	echo $host | grep -Eq '\.(host-h\.net|hetzner\.co\.za)$'
+}
+
+usage () {
+	cat 1>&2 <<EOF
+usage: remote-screen [OPTIONS] host
+
+-L lport:rhost:rport	SSH local port forwarding
+-R lport:rhost:rport	SSH remote port forwarding
+-S session		Join named screen session
+-X			SSH X11 forwarding
+-h			print usage and exit
+-n			Don't start screen
+-p port			SSH port
+-e escape		screen escape key
+EOF
+        exit 1
+}
+
+ssh_args=""
+screen_args=""
+want_screen="yes"
+
+port=3022
+
+args=`getopt L:R:S:e:p:Xhn? $*`
+if [ $? != 0 ]; then
+        usage
+fi
+set -- $args
+for i ; do
+        case "$i" in
+		-[h?])
+			usage
+			;;
+                -e)
+                        screen_args="$screen_args -e $2"
+                        shift; shift
+                        ;;
+                -[LR])
+                        ssh_args="$ssh_args $1 $2"
+                        shift; shift
+                        ;;
+                -n)
+                        want_screen=""
+                        shift
+                        ;;
+		-p)
+			port=$2
+			shift; shift
+			;;
+                -S)
+                        screen_args="$screen_args -S $2 -x"
+                        shift; shift
+                        ;;
+                -X)
+                        ssh_args="$ssh_args -X"
+                        shift
+                        ;;
+        esac
+done
+shift
+
+if [ $# != 1 ]; then
+        usage
+fi
+host=$1
+
+klist -s && klist | grep -q '[Pp]rincipal:.*\/root@HOST-H\.NET$'
+[ $? = 0 ] || kinit -Af $LOGNAME/root@HOST-H.NET
+[ $? = 0 ] || exit 1
+
+if [ ! -z "$DISPLAY" ]; then
+        printf "\033]0;$host\007"
+fi
+
+if ! is_fully_qualified $host; then
+	# Please someone tell me there's a better way to use the local cache
+	# to qualify a hostname using the resolv.conf search list?
+	echo Qualifying name of $host...
+	candidate=$(nslookup $host | awk '$1 == "Name:" {print $2}')
+	if [ -n "$candidate" ]; then
+		host=$candidate
+		echo Using qualified name $host
+	fi
+fi
+#if ! is_canonical $host; then
+#	echo Looking up canonical name of $host...
+#	for candidate in $(get_hostnames $host); do
+#		if is_canonical $candidate; then
+#			host=$candidate
+#			echo Using canonical name $host
+#			break
+#		fi
+#	done
+#fi
+if ! is_canonical $host && [ -x "$(which nc)" ]; then
+	echo Falling back to submission port query...
+	candidate=`nc -w 5 $host 587 </dev/null | head -n 1 | awk '{print $2}'`
+	if [ -n "$candidate" ]; then
+		host=$candidate
+	fi
+fi
+
+if [ -n "$want_screen" ]; then
+	if [ -z "$screen_args" ]; then
+		screen_args="-S $LOGNAME -ADR -e ^xx"
+	fi
+	ssh -C -t $ssh_args -p $port root@$host "/usr/bin/screen $screen_args"
+else
+	ssh -C -t $ssh_args -p $port root@$host
+fi

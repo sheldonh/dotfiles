@@ -112,7 +112,7 @@ users::gconfs { 'sheldonh':
   confs => [ 'gnome-terminal', 'metacity' ],
 }
 
-users::script { ['sheldonh/s', 'sheldonh/rump-prep']: }
+users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s' ]: }
 
 rubymine::user { 'sheldonh': }
 

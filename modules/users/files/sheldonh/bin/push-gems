@@ -1,0 +1,5 @@
+#!/bin/sh
+
+scp -P 3022 $* root@gems.hetzner.co.za:/var/www/gems.hetzner.co.za/gems/
+ssh -p 3022 root@gems.hetzner.co.za \
+	'gem generate_index -d /var/www/gems.hetzner.co.za'

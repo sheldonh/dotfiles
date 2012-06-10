@@ -32,6 +32,7 @@ package { 'hunspell-en': ensure => installed }
 package { 'icedtea-web': ensure => installed }
 package { [ 'libreoffice-calc', 'libreoffice-writer' ]: ensure => installed }
 package { 'pssh': ensure => installed }
+package { 'pwgen': ensure => installed }
 package { 'rdesktop': ensure => installed }
 package { 'sipcalc': ensure => installed }
 package { 'strace': ensure => installed }

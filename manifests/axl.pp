@@ -48,8 +48,8 @@ nodejs::package { 'coffee-script': ensure => installed }
 nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
-  # Living without it, to encourage walking around
-  #include skype
+  # Checking out new version...
+  include skype
 
   package { 'gmpc': ensure => installed }
 

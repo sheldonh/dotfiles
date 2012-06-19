@@ -117,6 +117,8 @@ users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s' ]: }
 
 rubymine::user { 'sheldonh': }
 
+users::df { 'sheldonh': }
+
 # Services that slow the boot process for no benefit to me
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }
 

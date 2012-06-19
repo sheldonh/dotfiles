@@ -17,9 +17,11 @@ class virtualbox {
   if !defined( Package['kernel-devel'] ) { package { 'kernel-devel': ensure => installed } }
 
   # https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=790521
+  # Fixed in Fedora 17
   exec { 'fix-redhat-bug-790521':
     command => 'mv /usr/sbin/dkms.old /usr/sbin/dkms',
     creates => '/usr/sbin/dkms',
+    onlyif  => '[ -e /usr/sbin/dkms.old ]',
     before  => Exec['setup-virtualbox'],
   }
 

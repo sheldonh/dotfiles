@@ -34,10 +34,25 @@ define users::rvm($home = "/home/$name", $gems = []) {
     require => Exec[$install],
   }
 
-  exec { "install-ruby-for-$user":
+  exec { "install-ruby1.9-for-$user":
     command  => "su -s /bin/bash - $user -c 'rvm install --default ruby'",
     creates  => "$home/.rvm/rubies/default",
     require  => Users::Gem[$gems],
+  }
+
+  exec { "generate-ruby1.9-docs-for-$user":
+    command  => "su -s /bin/bash - $user -c 'rvm docs generate all'",
+    unless   => "su -s /bin/bash - $user -c 'ri String >/dev/null'",
+    require  => Exec["install-ruby1.9-for-$user"],
+  }
+
+  # https://bugs.ruby-lang.org/issues/6383
+  $bugfix6383='CFLAGS="-O2 -fno-tree-dce -fno-optimize-sibling-calls"'
+
+  exec { "install-ruby1.8-for-$user":
+    command     => "su -s /bin/bash - $user -c '$bugfix6383 rvm install 1.8.7'",
+    unless      => "su -s /bin/bash - $user -c 'rvm list strings | grep ruby-1.8.7'",
+    require     => Users::Gem[$gems],
   }
 
 }

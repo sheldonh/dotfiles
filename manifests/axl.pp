@@ -3,8 +3,7 @@ Exec {
   timeout => 0,
 }
 
-# google-talkplugin crashing Firefox
-#include google_talk
+include google_talk
 include chrome
 include hetzner::aaapi
 include hetzner::hetzner_api

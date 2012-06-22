@@ -20,6 +20,7 @@ include mysql
 include vagrant
 include vpn::hetzner
 
+package { 'ack': ensure => installed }
 package { 'clusterssh': ensure => installed }
 package { 'gconf-editor': ensure => installed }
 package { 'gimp': ensure => installed }

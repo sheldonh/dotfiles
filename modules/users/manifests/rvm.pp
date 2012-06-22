@@ -51,8 +51,14 @@ define users::rvm($home = "/home/$name", $gems = []) {
 
   exec { "install-ruby1.8-for-$user":
     command     => "su -s /bin/bash - $user -c '$bugfix6383 rvm install 1.8.7'",
-    unless      => "su -s /bin/bash - $user -c 'rvm list strings | grep ruby-1.8.7'",
+    unless      => "su -s /bin/bash - $user -c 'rvm list strings | grep ^ruby-1.8.7-'",
     require     => Users::Gem[$gems],
+  }
+
+  exec { "install-ree-rg137-for-$user":
+    command => "su -s /bin/bash - $user -c '$bugfix6383 rvm install ree -n rg137 && rvm use ree-rg137 && rvm rubygems 1.3.7'",
+    unless  => "su -s /bin/bash - $user -c 'rvm list strings | grep ^ree-1.8.7-.*-rg137$'",
+    require => Users::Gem[$gems],
   }
 
 }

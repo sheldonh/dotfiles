@@ -31,6 +31,7 @@ package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }
 package { 'icedtea-web': ensure => installed }
 package { 'links': ensure => installed }
+package { 'liveusb-creator': ensure => installed }
 package { [ 'libreoffice-calc', 'libreoffice-writer' ]: ensure => installed }
 package { 'pssh': ensure => installed }
 package { 'pwgen': ensure => installed }

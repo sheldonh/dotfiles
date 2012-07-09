@@ -60,6 +60,10 @@ if $domain == 'hetzner.africa' {
     device => '//linsh/stuff',
   }
 
+  mount::cifs { '/media/whale/shared':
+    device => '//whale/shared',
+  }
+
   cups::printer { '2600n':
     driver         => '/usr/share/cups/model/HP-Color_LaserJet_1600.ppd.gz',
     driver_package => 'foo2hp',

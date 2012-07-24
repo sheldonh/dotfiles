@@ -8,6 +8,7 @@ include chrome
 include hetzner::aaapi
 include hetzner::hetzner_api
 include hetzner::konsoleh
+include hetzner::orderman
 include hetzner::password_resetter
 include kerberos
 include kvm

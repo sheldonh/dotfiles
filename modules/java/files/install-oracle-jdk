@@ -1,0 +1,36 @@
+#!/bin/sh
+
+dl_subdir=7u5-b06
+rpm=jdk-7u5-linux-x64.rpm
+jdk=jdk1.7.0_05
+jdk_pkg=jdk-1.7.0_05
+
+check() {
+	alternatives --display java | grep -q "link currently points to /usr/java/$jdk/jre/bin/java"
+	return $?
+}
+
+if [ "$1" = "check" ]; then
+	if check; then
+		exit 0
+	else
+		exit 1
+	fi
+fi
+
+if ! rpm -qa | grep -q ^$jdk_pkg; then
+	cd /tmp
+	wget --no-cookies --header "Cookie: gpw_e24=http://starjuice.net/;" \
+		http://download.oracle.com/otn-pub/java/jdk/$dl_subdir/$rpm
+	rpm -i $rpm
+	rm $rpm
+fi
+
+if ! check; then
+	alternatives --install /usr/bin/java java /usr/java/$jdk/jre/bin/java 20000
+	alternatives --install /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 \
+		/usr/java/$jdk/jre/lib/amd64/libnpjp2.so 20000
+	alternatives --install /usr/bin/javaws javaws /usr/java/$jdk/bin/javaws 20000
+	alternatives --install /usr/bin/javac javac /usr/java/$jdk/bin/javac 20000
+	alternatives --install /usr/bin/jar jar /usr/java/$jdk/bin/jar 20000
+fi

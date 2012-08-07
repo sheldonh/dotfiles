@@ -10,6 +10,7 @@ include hetzner::hetzner_api
 include hetzner::konsoleh
 include hetzner::orderman
 include hetzner::password_resetter
+include java
 include kerberos
 include kvm
 include media::flash
@@ -30,9 +31,9 @@ package { 'gnome-shell-extension-user-theme': ensure => installed }
 package { 'gnome-tweak-tool': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'hunspell-en': ensure => installed }
-package { 'icedtea-web': ensure => installed }
+package { 'icedtea-web': ensure => purged }
 package { 'iotop': ensure => installed }
-package { 'java-1.7.0-openjdk-devel': ensure => installed }
+package { 'java-1.7.0-openjdk-devel': ensure => purged }
 package { 'links': ensure => installed }
 package { 'liveusb-creator': ensure => installed }
 package { [ 'libreoffice-calc', 'libreoffice-writer' ]: ensure => installed }

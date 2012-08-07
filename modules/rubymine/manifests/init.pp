@@ -15,9 +15,9 @@ class rubymine {
     require => Exec['install-rubymine'],
   }
 
-  exec { 'increase-inity-max-user-matches':
+  exec { 'increase-init-max-user-matches':
     command => "echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf && sysctl -p",
-    unless  => "grep '^fs.inotify.max_user_watches = 524288' /etc/sysct.conf",
+    unless  => "grep '^fs.inotify.max_user_watches = 524288' /etc/sysctl.conf",
   }
 
 }

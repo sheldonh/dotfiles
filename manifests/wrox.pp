@@ -110,6 +110,8 @@ users::dotfiles { 'sheldonh':
     'kde/share/apps/konsole/Shell.profile',
     'kde/share/apps/konsole/Solarized Dark.colorscheme',
     'kde/share/apps/konsole/Solarized Light.colorscheme',
+    'RubyMine40/config/colors/Solarized Dark.xml',
+    'RubyMine40/config/colors/Solarized Light.xml',
   ],
 }
 users::dotfile { 'kde/env/gpgagent.sh':

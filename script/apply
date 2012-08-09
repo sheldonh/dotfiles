@@ -1,10 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env ruby
 
-for path in /usr/local/bin /usr/bin; do
-	if [ -x $path/puppet ]; then
-		puppet=$path/puppet
-	fi
-done
-puppet=${puppet:=puppet}
-
-cd $(dirname $0)/.. && sudo $puppet apply --modulepath modules --verbose $* manifests/axl.pp
+manifest = ARGV.pop
+Dir.chdir File.join(File.dirname(__FILE__), '..')
+puppet = %w[ /usr/local/bin/puppet /usr/bin/puppet ].detect { |p| File.executable?(p) } || 'puppet'
+system "sudo #{puppet} apply --modulepath modules --verbose #{ARGV.join(' ')} #{manifest}"

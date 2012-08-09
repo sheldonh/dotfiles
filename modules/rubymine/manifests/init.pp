@@ -1,7 +1,7 @@
 class rubymine {
 
-  $version = '4.5'
-  $userdir = '.RubyMine45'
+  $version = '4.5.2'
+  $userdir = '.RubyMine40'
   $keyfile = 'rubymine40.key'
 
   exec { 'install-rubymine':
@@ -16,7 +16,7 @@ class rubymine {
   }
 
   exec { 'increase-init-max-user-matches':
-    command => "echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf && sysctl -p",
+    command => "echo 'fs.inotify.max_user_watches = 524288' >> /etc/sysctl.conf && sysctl -e -p",
     unless  => "grep '^fs.inotify.max_user_watches = 524288' /etc/sysctl.conf",
   }
 

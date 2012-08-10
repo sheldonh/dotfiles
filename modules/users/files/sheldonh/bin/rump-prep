@@ -19,8 +19,8 @@ scp puppetmaster1.cpt1.host-h.net:/root/rump-prep.tar ${tmpdir}/
 
 cp .gitconfig ${tmpdir}/
 mkdir ${tmpdir}/.ssh
-cp -p .ssh/id_dsa ${tmpdir}/.ssh/id_dsa
-cp -p .ssh/id_dsa.pub ${tmpdir}/.ssh/id_dsa.pub
+cp -p .ssh/id_dsa_rump ${tmpdir}/.ssh/id_dsa
+cp -p .ssh/id_dsa_rump.pub ${tmpdir}/.ssh/id_dsa.pub
 echo "StrictHostKeyChecking no" > ${tmpdir}/.ssh/config
 cd ${tmpdir}
 tar -rf rump-prep.tar .gitconfig .ssh
@@ -29,6 +29,8 @@ cd ..
 scp ${tmpdir}/rump-prep.tar ${host}:/home/${user}/
 rm -rf ${tmpdir}
 
+ssh ${host} "su -l ${user} -c 'rm -rf puppet'"
+ssh ${host} "su -l ${user} -c 'git clone sheldonh@vcs.hetzner.co.za:/srv/git/puppet'"
 ssh ${host} "chown ${user} /home/${user}/rump-prep.tar"
 ssh ${host} "su -l ${user} -c 'tar -xf rump-prep.tar .gitconfig .ssh'"
 ssh ${host} "su -l ${user} -c 'tar -xf rump-prep.tar puppet'"

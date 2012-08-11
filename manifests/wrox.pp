@@ -107,6 +107,7 @@ users::dotfiles { 'sheldonh':
     'gitconfig',
     'gitignore',
     'ssh/config',
+    'kde/share/apps/konsole/Railscasts.colorscheme',
     'kde/share/apps/konsole/Shell.profile',
     'kde/share/apps/konsole/Solarized Dark.colorscheme',
     'kde/share/apps/konsole/Solarized Light.colorscheme',

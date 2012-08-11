@@ -1,6 +1,6 @@
 [Appearance]
 BoldIntense=true
-ColorScheme=Solarized Dark
+ColorScheme=Railscasts
 Font=Monospace,16,-1,5,50,0,0,0,0,0
 
 [General]

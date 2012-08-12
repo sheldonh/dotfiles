@@ -98,6 +98,7 @@ if $domain == 'hearnlan' {
 
 user { 'sheldonh': }
 
+users::dropbox { 'sheldonh': }
 #users::rpmbuild { 'sheldonh': }
 users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':

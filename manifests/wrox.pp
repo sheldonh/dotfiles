@@ -117,7 +117,7 @@ users::dotfiles { 'sheldonh':
     'RubyMine40/config/colors/Solarized Light.xml',
   ],
 }
-users::dotfile { 'kde/env/gpgagent.sh':
+users::dotfile { ['kde/Autostart/ssh-add.sh', 'kde/env/gpgagent.sh', 'kde/shutdown/gpgagent.sh']:
   user => sheldonh,
   mode => '0755',
 }
@@ -149,4 +149,3 @@ rubymine::user { 'sheldonh': }
 
 # Services that slow the boot process for no benefit to me
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }
-

@@ -141,7 +141,7 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
 #  confs => [ 'gnome-terminal', 'metacity' ],
 #}
 #
-users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s' ]: }
+users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s', 'sheldonh/git-ksshaskpass' ]: }
 
 rubymine::user { 'sheldonh': }
 

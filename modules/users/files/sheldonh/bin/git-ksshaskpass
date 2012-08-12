@@ -1,0 +1,3 @@
+#!/bin/sh
+set $*
+exec ksshaskpass $1\@$3

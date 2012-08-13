@@ -19,6 +19,7 @@ include media::pdf
 include media::rar
 #include mongodb
 #include mysql
+include skype
 #include vagrant
 include vpn::hetzner
 #
@@ -46,18 +47,15 @@ package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
-#package { 'whois': ensure => installed }
-#package { 'wireshark-gnome': ensure => installed }
+package { 'whois': ensure => installed }
+package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
 #package { 'xchat': ensure => installed }
-#
-#nodejs::package { 'coffee-script': ensure => installed }
-#nodejs::package { ['mocha', 'should']: ensure => installed }
-#
-if $domain == 'hetzner.africa' {
-  # Checking out new version...
-  include skype
 
+nodejs::package { 'coffee-script': ensure => installed }
+nodejs::package { ['mocha', 'should']: ensure => installed }
+
+if $domain == 'hetzner.africa' {
   package { 'gmpc': ensure => installed }
 
   mount::cifs { '/media/linsh/stuff':
@@ -99,7 +97,7 @@ if $domain == 'hearnlan' {
 user { 'sheldonh': }
 
 users::dropbox { 'sheldonh': }
-#users::rpmbuild { 'sheldonh': }
+users::rpmbuild { 'sheldonh': }
 users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':
   files => [

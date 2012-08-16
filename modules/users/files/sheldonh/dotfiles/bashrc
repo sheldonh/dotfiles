@@ -15,7 +15,7 @@ fi
 
 function setps1()
 {
-	if [ -n "$GITPS1" -a -n "$NORMALPS1" ] && __gitdir >/dev/null; then
+	if [ -n "$GITPS1" -a -n "$NORMALPS1" ] && type -p __gitdir && __gitdir >/dev/null; then
 		export PS1="$GITPS1"
 	else
 		export PS1="$NORMALPS1"

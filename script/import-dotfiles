@@ -3,7 +3,7 @@
 cd $(dirname $0)/../modules/users/files/$USER/dotfiles || exit 1
 for i in $(find . -type f); do
 	d=${i#./}
-	s=$HOME/.${d%.md}
+	s=$HOME/.${d%.enc}
 	if [ -e $s ]; then
 		echo .$d
 		cat $s > $d

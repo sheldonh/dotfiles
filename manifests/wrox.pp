@@ -111,6 +111,7 @@ users::dotfiles { 'sheldonh':
     'kde/share/apps/konsole/Shell.profile',
     'kde/share/apps/konsole/Solarized Dark.colorscheme',
     'kde/share/apps/konsole/Solarized Light.colorscheme',
+    'kde/share/apps/konsole/konsoleui.rc',
     'RubyMine40/config/colors/Solarized Dark.xml',
     'RubyMine40/config/colors/Solarized Light.xml',
   ],

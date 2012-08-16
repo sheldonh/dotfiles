@@ -147,3 +147,5 @@ rubymine::user { 'sheldonh': }
 
 # Services that slow the boot process for no benefit to me
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }
+
+class { 'kde::autologin': user => sheldonh }

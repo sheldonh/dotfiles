@@ -51,6 +51,7 @@ package { 'whois': ensure => installed }
 package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
 #package { 'xchat': ensure => installed }
+package { 'yum-plugin-fastestmirror': ensure => installed }
 
 nodejs::package { 'coffee-script': ensure => installed }
 nodejs::package { ['mocha', 'should']: ensure => installed }

@@ -5,11 +5,6 @@ Exec {
 
 include google_talk
 include chrome
-include hetzner::aaapi
-include hetzner::hetzner_api
-include hetzner::konsoleh
-include hetzner::orderman
-include hetzner::password_resetter
 include java
 include kerberos
 include media::mp3
@@ -19,7 +14,6 @@ include mongodb
 include mysql
 include skype
 include vagrant
-include vpn::hetzner
 
 package { 'ack': ensure => installed }
 package { 'clusterssh': ensure => installed }
@@ -46,6 +40,12 @@ nodejs::package { 'coffee-script': ensure => installed }
 nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
+  include hetzner::aaapi
+  include hetzner::hetzner_api
+  include hetzner::konsoleh
+  include hetzner::orderman
+  include hetzner::password_resetter
+
   mount::cifs { '/media/linsh/stuff':
     user   => 'linsh',
     device => '//linsh/stuff',
@@ -63,6 +63,8 @@ if $domain == 'hetzner.africa' {
   }
 }
 if $domain == 'hearnlan' {
+
+  include vpn::hetzner
 
   mount::ntfs { '/media/windows':
     device => '/dev/sda2',

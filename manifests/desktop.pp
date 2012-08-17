@@ -26,6 +26,7 @@ package { 'liveusb-creator': ensure => installed }
 package { 'pssh': ensure => installed }
 package { 'pwgen': ensure => installed }
 package { 'qmpdclient': ensure => installed }
+package { 'qt-recordmydesktop': ensure => installed }
 package { 'sipcalc': ensure => installed }
 package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }

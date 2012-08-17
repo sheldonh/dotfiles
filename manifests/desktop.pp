@@ -5,43 +5,33 @@ Exec {
 
 include google_talk
 include chrome
-#include hetzner::aaapi
-#include hetzner::hetzner_api
-#include hetzner::konsoleh
-#include hetzner::orderman
-#include hetzner::password_resetter
+include hetzner::aaapi
+include hetzner::hetzner_api
+include hetzner::konsoleh
+include hetzner::orderman
+include hetzner::password_resetter
 include java
 include kerberos
-#include kvm
-#include media::flash # if your only browser is chrome, you don't need this crap
 include media::mp3
 include media::pdf
 include media::rar
-#include mongodb
-#include mysql
+include mongodb
+include mysql
 include skype
-#include vagrant
+include vagrant
 include vpn::hetzner
-#
+
 package { 'ack': ensure => installed }
 package { 'clusterssh': ensure => installed }
 package { 'firefox': ensure => installed }
-#package { 'gconf-editor': ensure => installed }
-#package { 'gimp': ensure => installed }
 package { [ 'git', 'gitk' ]: ensure => installed }
-#package { 'gnome-shell-extension-user-theme': ensure => installed }
-#package { 'gnome-tweak-tool': ensure => installed }
 package { 'graphviz': ensure => installed }
-#package { 'hunspell-en': ensure => installed }
-#package { 'icedtea-web': ensure => purged }
 package { 'iotop': ensure => installed }
-#package { 'java-1.7.0-openjdk-devel': ensure => purged }
 package { 'links': ensure => installed }
-#package { 'liveusb-creator': ensure => installed }
-#package { [ 'libreoffice-calc', 'libreoffice-writer' ]: ensure => installed }
+package { 'liveusb-creator': ensure => installed }
 package { 'pssh': ensure => installed }
 package { 'pwgen': ensure => installed }
-#package { 'rdesktop': ensure => installed }
+package { 'qmpdclient': ensure => installed }
 package { 'sipcalc': ensure => installed }
 package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
@@ -50,15 +40,12 @@ package { 'vim-enhanced': ensure => installed }
 package { 'whois': ensure => installed }
 package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
-#package { 'xchat': ensure => installed }
 package { 'yum-plugin-fastestmirror': ensure => installed }
 
 nodejs::package { 'coffee-script': ensure => installed }
 nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
-  package { 'gmpc': ensure => installed }
-
   mount::cifs { '/media/linsh/stuff':
     user   => 'linsh',
     device => '//linsh/stuff',
@@ -92,7 +79,6 @@ if $domain == 'hearnlan' {
     address        => '10.0.0.129',
     cups_default   => true,
   }
-
 }
 
 user { 'sheldonh': }
@@ -137,15 +123,9 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
   require => Users::Rvm['sheldonh'],
 }
 
-#users::gconfs { 'sheldonh':
-#  confs => [ 'gnome-terminal', 'metacity' ],
-#}
-#
 users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s', 'sheldonh/git-ksshaskpass' ]: }
 
 rubymine::user { 'sheldonh': }
-
-#users::df { 'sheldonh': }
 
 # Services that slow the boot process for no benefit to me
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }

@@ -110,7 +110,7 @@ users::dotfile { ['kde/Autostart/ssh-add.sh', 'kde/env/gpgagent.sh', 'kde/shutdo
   user => sheldonh,
   mode => '0755',
 }
-users::dotfile { 'gistrc':
+users::dotfile { ['gistrc', 'trc']:
   user => sheldonh,
   mode => '0600',
 }

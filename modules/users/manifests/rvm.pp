@@ -45,7 +45,7 @@ define users::rvm($home = "/home/$name", $gems = []) {
 
   exec { "install-ruby1.9-for-$user":
     command  => "su -s /bin/bash - $user -c 'rvm install --default ruby-1.9.3 --patch $patch_symvis'",
-    creates  => "$home/.rvm/rubies/default",
+    unless   => "[ -h $home/.rvm/rubies/default ]",
     require  => Users::Gem[$gems],
   }
 

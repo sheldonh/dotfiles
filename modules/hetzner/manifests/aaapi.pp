@@ -7,4 +7,10 @@ class hetzner::aaapi {
 
   if !defined( Service['slapd'] ) { service { 'slapd': enable => false } }
 
+  host { 'aaapi':
+    ensure  => present,
+    name    => 'aaapi.vagrantup.com',
+    ip      => '127.0.0.1',
+  }
+
 }

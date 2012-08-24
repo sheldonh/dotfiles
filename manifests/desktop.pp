@@ -20,6 +20,7 @@ package { 'clusterssh': ensure => installed }
 package { 'firefox': ensure => installed }
 package { [ 'git', 'gitk' ]: ensure => installed }
 package { 'graphviz': ensure => installed }
+package { 'haskell-platform': ensure => installed }
 package { 'iotop': ensure => installed }
 package { 'links': ensure => installed }
 package { 'liveusb-creator': ensure => installed }

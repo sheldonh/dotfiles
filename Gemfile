@@ -1,4 +1,3 @@
 source 'http://rubygems.org'
 
-gem 'puppet'
-gem 'puppet-lint'
+gem 'puppet-lint', '~> 0.2.0'

@@ -14,6 +14,7 @@ include mongodb
 include mysql
 include skype
 include vagrant
+include vpn::hetzner
 
 package { 'ack': ensure => installed }
 package { 'clusterssh': ensure => installed }
@@ -67,8 +68,6 @@ if $domain == 'hetzner.africa' {
   }
 }
 if $domain == 'hearnlan' {
-
-  include vpn::hetzner
 
   mount::ntfs { '/media/windows':
     device => '/dev/sda2',

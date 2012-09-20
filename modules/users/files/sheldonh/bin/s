@@ -98,9 +98,9 @@ klist -s && klist | grep -q '[Pp]rincipal:.*\/root@HOST-H\.NET$'
 [ $? = 0 ] || kinit -Af $LOGNAME/root@HOST-H.NET
 [ $? = 0 ] || exit 1
 
-if [ ! -z "$DISPLAY" ]; then
-        printf "\033]0;$host\007"
-fi
+#if [ ! -z "$DISPLAY" ]; then
+#        printf "\033]0;$host\007"
+#fi
 
 if ! is_fully_qualified $host; then
 	# Please someone tell me there's a better way to use the local cache

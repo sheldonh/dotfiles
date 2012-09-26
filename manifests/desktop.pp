@@ -50,6 +50,7 @@ if $domain == 'hetzner.africa' {
   include hetzner::konsoleh
   include hetzner::orderman
   include hetzner::password_resetter
+  include hetzner::regprox
 
   mount::cifs { '/media/linsh/stuff':
     user   => 'linsh',

@@ -87,7 +87,9 @@ if $domain == 'hearnlan' {
   }
 }
 
-user { 'sheldonh': }
+user { 'sheldonh':
+  groups => ['wheel', 'dialout', 'wireshark'],
+}
 
 users::dropbox { 'sheldonh': }
 users::rpmbuild { 'sheldonh': }

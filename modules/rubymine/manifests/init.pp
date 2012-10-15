@@ -1,6 +1,6 @@
 class rubymine {
 
-  $version = '4.5.2'
+  $version = '4.5.4'
   $userdir = '.RubyMine40'
   $keyfile = 'rubymine40.key'
 

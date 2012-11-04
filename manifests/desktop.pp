@@ -81,10 +81,13 @@ if $domain == 'hearnlan' {
     credential => 'fatboy'
   }
 
-  cups::printer { 'X422':
-    driver         => 'http://www.cups.org/ppd/lexmark/lexx422.ppd.gz',
-    address        => '10.0.0.129',
-    cups_default   => true,
+  include cups::canon_ufr2
+
+  cups::printer { 'MF4570dn':
+    driver       => '/usr/share/cups/model/CNCUPSMF4500ZK.ppd',
+    address      => 'canon.hearnlan',
+    cups_default => true,
+    require      => Class['cups::canon_ufr2'],
   }
 }
 

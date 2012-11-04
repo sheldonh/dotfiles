@@ -9,10 +9,16 @@ class rubymine {
     creates => "/usr/local/RubyMine-${version}",
   }
 
-  exec { 'create-rubymine-symlink':
-    command => "ln -fs /usr/local/RubyMine-${version}/bin/rubymine.sh /usr/local/bin/rubymine",
-    unless  => "ls -ld /usr/local/bin/rubymine | grep RubyMine-${version}",
+  exec { 'create-rubymine-dir-symlink':
+    command => "ln -fs /usr/local/RubyMine-${version} /usr/local/RubyMine",
+    unless  => "ls -ld /usr/local/RubyMine | grep RubyMine-${version}",
     require => Exec['install-rubymine'],
+  }
+
+  file { '/usr/local/bin/rubymine':
+    ensure => link,
+    target => '/usr/local/RubyMine/bin/rubymine.sh',
+    require => Exec['create-rubymine-dir-symlink'],
   }
 
   exec { 'increase-init-max-user-matches':

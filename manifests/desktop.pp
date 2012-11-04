@@ -20,7 +20,6 @@ package { 'ack': ensure => installed }
 package { 'clusterssh': ensure => installed }
 package { 'firefox': ensure => installed }
 package { [ 'git', 'gitk' ]: ensure => installed }
-package { 'gmpc': ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'haskell-platform': ensure => installed }
 package { 'hlint': ensure => installed }
@@ -51,6 +50,8 @@ if $domain == 'hetzner.africa' {
   include hetzner::orderman
   include hetzner::password_resetter
   include hetzner::regprox
+
+  package { 'gmpc': ensure => installed }
 
   mount::cifs { '/media/linsh/stuff':
     user   => 'linsh',
@@ -101,6 +102,7 @@ users::dotfiles { 'sheldonh':
     'gemrc',
     'gitconfig',
     'gitignore',
+    'gnome/apps/jetbrains-rubymine.desktop',
     'ssh/config',
     'kde/share/apps/konsole/Railscasts.colorscheme',
     'kde/share/apps/konsole/Shell.profile',

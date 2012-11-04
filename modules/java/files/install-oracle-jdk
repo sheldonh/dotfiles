@@ -27,7 +27,7 @@ alternative() {
 }
 
 if [ "$1" = "check" ]; then
-	if check; then
+	if check java /usr/java/$jdk/jre/bin/java; then
 		exit 0
 	else
 		exit 1

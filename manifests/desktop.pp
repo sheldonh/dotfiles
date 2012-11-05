@@ -71,6 +71,9 @@ if $domain == 'hetzner.africa' {
 }
 if $domain == 'hearnlan' {
 
+  # Just a liiiittle work at home
+  include hetzner::regprox
+
   mount::ntfs { '/media/windows':
     device => '/dev/sda2',
   }

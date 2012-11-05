@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Comment=Develop with pleasure!
+Exec="/usr/local/RubyMine/bin/rubymine.sh" %f
+Icon=/usr/local/RubyMine/bin/RMlogo.svg
+Name=JetBrains RubyMine
+NoDisplay=false
+Path[$e]=
+StartupNotify=true
+StartupWMClass=jetbrains-rubymine
+Terminal=0
+TerminalOptions=
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=false
+X-KDE-Username=

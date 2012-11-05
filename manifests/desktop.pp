@@ -100,20 +100,20 @@ users::rpmbuild { 'sheldonh': }
 users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':
   files => [
-    'bashrc',
     'bash_profile',
+    'bashrc',
     'gemrc',
     'gitconfig',
     'gitignore',
-    'gnome/apps/jetbrains-rubymine.desktop',
-    'ssh/config',
+    'kde/share/apps/konsole/konsoleui.rc',
     'kde/share/apps/konsole/Railscasts.colorscheme',
     'kde/share/apps/konsole/Shell.profile',
     'kde/share/apps/konsole/Solarized Dark.colorscheme',
     'kde/share/apps/konsole/Solarized Light.colorscheme',
-    'kde/share/apps/konsole/konsoleui.rc',
+    'local/share/applications/jetbrains-rubymine.desktop',
     'RubyMine40/config/colors/Solarized Dark.xml',
     'RubyMine40/config/colors/Solarized Light.xml',
+    'ssh/config',
   ],
 }
 users::dotfile { ['kde/Autostart/ssh-add.sh', 'kde/env/gpgagent.sh', 'kde/shutdown/gpgagent.sh']:

@@ -12,7 +12,7 @@ class cups::canon_ufr2 {
   }
 
   exec { "unpack-$zipfile":
-    command => "unzip -u $zipfile $subdir",
+    command => "unzip -o $zipfile '$subdir/*.rpm'",
     cwd     => $dldir,
     creates => "$dldir/$subdir",
     require => Exec["download-$zipfile"],

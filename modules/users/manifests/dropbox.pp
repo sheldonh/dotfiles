@@ -1,5 +1,7 @@
 define users::dropbox($user = $name, $group = $user, $home = "/home/$user") {
 
+  include wget
+
   exec { "install-dropboxd-for-$name":
     command  => "cd $home && wget -O - 'https://www.dropbox.com/download?plat=lnx.x86_64' | tar xzf - && chown -R $user:$group .dropbox-dist",
     creates  => "$home/.dropbox-dist",

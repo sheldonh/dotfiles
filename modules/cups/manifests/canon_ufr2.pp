@@ -1,5 +1,7 @@
 class cups::canon_ufr2 {
 
+  include wget
+
   $dldir = '/usr/src'
   $zipfile = 'o1113enx_l_ufr220.zip'
   $subdir = 'UK/64-bit_Driver/RPM'

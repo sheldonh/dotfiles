@@ -1,5 +1,7 @@
 class java {
 
+  include wget
+
   file { '/usr/local/bin/install-oracle-jdk':
     owner  => root,
     group  => root,

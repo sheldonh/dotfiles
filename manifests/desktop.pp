@@ -74,8 +74,10 @@ if $domain == 'hearnlan' {
   # Just a liiiittle work at home
   include hetzner::regprox
 
-  mount::ntfs { '/media/windows':
-    device => '/dev/sda2',
+  if $hostname == 'wrink' {
+    mount::ntfs { '/media/windows':
+      device => '/dev/sda2',
+    }
   }
 
   mount::cifs { '/media/fatboy/public':

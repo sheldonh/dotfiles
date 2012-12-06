@@ -40,8 +40,8 @@ package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
 package { 'yum-plugin-fastestmirror': ensure => installed }
 
-nodejs::package { 'coffee-script': ensure => installed }
-nodejs::package { ['mocha', 'should']: ensure => installed }
+#nodejs::package { 'coffee-script': ensure => installed }
+#nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
   include hetzner::aaapi
@@ -97,7 +97,8 @@ if $domain == 'hearnlan' {
 }
 
 user { 'sheldonh':
-  groups => ['wheel', 'dialout', 'wireshark'],
+  groups  => ['wheel', 'dialout', 'wireshark'],
+  require => Package['wireshark-gnome'],
 }
 
 users::dropbox { 'sheldonh': }

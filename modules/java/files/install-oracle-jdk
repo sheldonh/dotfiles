@@ -1,16 +1,27 @@
 #!/bin/sh
 
-dl_subdir=7u7-b10
-rpm=jdk-7u7-linux-x64.rpm
-jdk=jdk1.7.0_07
-jdk_pkg=jdk-1.7.0_07
+# TODO: zero-pad minor and build / watch out for transition to 10
+
+# To determine major, minor and build, start at http://www.oracle.com/technetwork/java/javase/downloads/index.html
+major=7
+minor=9
+build=05
+update=${major}u${minor}
+rpm=jdk-${major}u${minor}-linux-x64.rpm
+url=http://download.oracle.com/otn-pub/java/jdk/${update}-b${build}/${rpm}
+jdk=jdk1.${major}.0_0${minor}
+jdk_pkg=jdk-1.${major}.0_0${minor}
 
 check() {
         local name=$1
 	local path=$2
 
-	alternatives --display $name | grep -Fq "link currently points to $path"
-	return $?
+	if [ $(lsb_release -rs) = 18 ]; then
+		return 0
+	else
+		alternatives --display $name | grep -Fq "link currently points to $path"
+		return $?
+	fi
 }
 
 alternative() {
@@ -27,7 +38,8 @@ alternative() {
 }
 
 if [ "$1" = "check" ]; then
-	if check java /usr/java/$jdk/jre/bin/java; then
+	java=/usr/java/$jdk/jre/bin/java
+	if [ -x $java ] && check java /usr/java/$jdk/jre/bin/java; then
 		exit 0
 	else
 		exit 1
@@ -35,16 +47,24 @@ if [ "$1" = "check" ]; then
 fi
 
 if ! rpm -qa | grep -q ^$jdk_pkg; then
-	cd /tmp
+	rpmdir=`mktemp -d /tmp/java-download.XXXXXXXX` || exit 1
+	cd $rpmdir
 	wget --no-cookies --header "Cookie: gpw_e24=http://starjuice.net/;" \
-		http://download.oracle.com/otn-pub/java/jdk/$dl_subdir/$rpm
-	rpm -i $rpm
-	rm $rpm
+	     -O $rpmdir/$rpm \
+	     $url
+	rpm -i $rpmdir/$rpm
+	cd /
+	rm -rf $rpmdir
 fi
 
-alternative /usr/bin/java java /usr/java/$jdk/jre/bin/java 20000
-alternative /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 \
-	/usr/java/$jdk/jre/lib/amd64/libnpjp2.so 20000
-alternative /usr/bin/javaws javaws /usr/java/$jdk/bin/javaws 20000
-alternative /usr/bin/javac javac /usr/java/$jdk/bin/javac 20000
-alternative /usr/bin/jar jar /usr/java/$jdk/bin/jar 20000
+
+if [ $(lsb_release -rs) != 18 ]; then
+	alternative /usr/bin/java java /usr/java/$jdk/jre/bin/java 20000
+	alternative /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 \
+		/usr/java/$jdk/jre/lib/amd64/libnpjp2.so 20000
+	alternative /usr/bin/javaws javaws /usr/java/$jdk/bin/javaws 20000
+	alternative /usr/bin/javac javac /usr/java/$jdk/bin/javac 20000
+	alternative /usr/bin/jar jar /usr/java/$jdk/bin/jar 20000
+fi
+
+exit 0

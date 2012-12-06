@@ -34,6 +34,7 @@ package { 'sipcalc': ensure => installed }
 package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
+package { 'vim-command-t': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'whois': ensure => installed }
 package { 'wireshark-gnome': ensure => installed }

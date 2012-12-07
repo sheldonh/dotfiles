@@ -1,6 +1,7 @@
 [virtualbox]
 name=Fedora $releasever - $basearch - VirtualBox
-baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
+baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/17/$basearch
+#baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
 enabled=1
 skip_if_unavailable=1
 gpgcheck=1

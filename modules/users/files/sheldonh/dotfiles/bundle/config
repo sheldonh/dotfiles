@@ -1,2 +1,7 @@
 ---
-BUNDLE_BUILD: --with-xml2-lib=/home/sheldonh/.rvm/usr/lib --with-xml2-include=/home/sheldonh/.rvm/usr/include/libxml2 --with-xsl2-lib=/home/sheldonh/.rvm/usr/lib --with-xslt-include=/home/sheldonh/.rvm/usr/include/libxslt
+BUNDLE_BUILD: --with-xml2-lib=/home/sheldonh/.rvm/usr/lib --with-xml2-include=/home/sheldonh/.rvm/usr/include/libxml2
+  --with-xsl2-lib=/home/sheldonh/.rvm/usr/lib --with-xslt-include=/home/sheldonh/.rvm/usr/include/libxslt
+BUNDLE_BUILD__LIBXML-RUBY: --with-xml2-lib=/home/sheldonh/.rvm/usr/lib --with-xml2-include=/home/sheldonh/.rvm/usr/include/libxml2
+  --with-xsl2-lib=/home/sheldonh/.rvm/usr/lib --with-xslt-include=/home/sheldonh/.rvm/usr/include/libxslt
+BUNDLE_BUILD__NOKOGIRI: --with-xml2-lib=/home/sheldonh/.rvm/usr/lib --with-xml2-include=/home/sheldonh/.rvm/usr/include/libxml2
+  --with-xsl2-lib=/home/sheldonh/.rvm/usr/lib --with-xslt-include=/home/sheldonh/.rvm/usr/include/libxslt

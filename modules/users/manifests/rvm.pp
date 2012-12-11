@@ -34,6 +34,18 @@ define users::rvm($home = "/home/$name", $gems = []) {
     require => Exec[$install],
   }
 
+  exec { "rvm-pkg-libxml2-for-$user":
+    command => "su -s /bin/bash - $user -c 'rvm pkg install libxml2 --verify-downloads 1'",
+    unless  => "[ -e $home/.rvm/usr/include/libxml2 ]",
+    require => Exec[$install],
+  }
+
+  exec { "rvm-pkg-libxslt-for-$user":
+    command => "su -s /bin/bash - $user -c 'rvm pkg install libxslt --verify-downloads 1'",
+    unless  => "[ -e $home/.rvm/usr/include/libxslt ]",
+    require => Exec[$install],
+  }
+
   $patch_symvis = "$home/.rvm/patches/ruby/1.9.3/symbol-visibility-fix.patch"
   file { $patch_symvis:
     owner   => $user,

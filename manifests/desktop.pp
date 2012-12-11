@@ -109,6 +109,7 @@ users::dotfiles { 'sheldonh':
   files => [
     'bash_profile',
     'bashrc',
+    'bundle/config',
     'config/gmpc/gmpc.cfg',
     'config/gmpc/profiles.cfg',
     'gemrc',

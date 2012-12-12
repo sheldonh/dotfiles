@@ -9,7 +9,6 @@ include java
 include kerberos
 include media::mp3
 include media::pdf
-include media::rar
 include mongodb
 include mysql
 include skype
@@ -35,6 +34,7 @@ package { 'sipcalc': ensure => installed }
 package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
+package { 'unrar': ensure  => installed }
 package { 'vim-command-t': ensure => installed }
 package { 'vim-enhanced': ensure => installed }
 package { 'whois': ensure => installed }

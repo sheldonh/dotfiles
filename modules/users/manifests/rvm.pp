@@ -56,28 +56,22 @@ define users::rvm($home = "/home/$name", $gems = []) {
   }
 
   exec { "install-ruby1.9-for-$user":
-    command  => "su -s /bin/bash - $user -c 'rvm install --default ruby-1.9.3 --patch $patch_symvis'",
+    command  => "su -s /bin/bash - $user -c 'rvm install --docs --default ruby-1.9.3 --patch $patch_symvis'",
     unless   => "[ -h $home/.rvm/rubies/default ]",
     require  => Users::Gem[$gems],
-  }
-
-  exec { "generate-ruby1.9-docs-for-$user":
-    command  => "su -s /bin/bash - $user -c 'rvm docs generate all'",
-    unless   => "su -s /bin/bash - $user -c 'ri String >/dev/null'",
-    require  => Exec["install-ruby1.9-for-$user"],
   }
 
   # https://bugs.ruby-lang.org/issues/6383
   $bugfix6383='CFLAGS="-O2 -fno-tree-dce -fno-optimize-sibling-calls"'
 
   exec { "install-ruby1.8-for-$user":
-    command     => "su -s /bin/bash - $user -c '$bugfix6383 rvm install 1.8.7'",
+    command     => "su -s /bin/bash - $user -c '$bugfix6383 rvm install --docs 1.8.7'",
     unless      => "su -s /bin/bash - $user -c 'rvm list strings | grep ^ruby-1.8.7-'",
     require     => Users::Gem[$gems],
   }
 
   exec { "install-ree-rg137-for-$user":
-    command => "su -s /bin/bash - $user -c '$bugfix6383 rvm install ree -n rg137 && rvm use ree-rg137 && rvm rubygems 1.3.7'",
+    command => "su -s /bin/bash - $user -c '$bugfix6383 rvm install --docs ree -n rg137 && rvm use ree-rg137 && rvm rubygems 1.3.7'",
     unless  => "su -s /bin/bash - $user -c 'rvm list strings | grep ^ree-1.8.7-.*-rg137$'",
     require => Users::Gem[$gems],
   }

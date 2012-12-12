@@ -26,6 +26,7 @@ package { 'hlint': ensure => installed }
 package { 'iotop': ensure => installed }
 package { 'links': ensure => installed }
 package { 'liveusb-creator': ensure => installed }
+package { 'mplayer': ensure => installed }
 package { 'pastebinit': ensure => installed }
 package { 'pssh': ensure => installed }
 package { 'pwgen': ensure => installed }

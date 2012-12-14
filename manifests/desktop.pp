@@ -11,6 +11,7 @@ include media::mp3
 include media::pdf
 include mongodb
 include mysql
+include rpmfusion::nonfree
 include skype
 include vagrant
 include vpn::hetzner

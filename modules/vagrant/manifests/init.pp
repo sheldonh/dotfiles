@@ -2,7 +2,12 @@ class vagrant {
 
   if $::virtual == 'physical' {
     if !defined( Package['VirtualBox'] ) { package { 'VirtualBox': ensure  => installed } }
-    if !defined( Package['kmod-VirtualBox'] ) { package { 'kmod-VirtualBox': ensure  => installed } }
+    if !defined( Package['akmod-VirtualBox'] ) {
+      package { 'akmod-VirtualBox':
+        ensure  => installed,
+        require => Package['VirtualBox'],
+      }
+    }
 
     # As of puppet-2.7.13, the yum provider doesn't support the source package parameter.
     exec { 'install-vagrant':

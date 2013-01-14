@@ -5,8 +5,8 @@ Used in conjunction with:
 
 As root:
 
-  yum install -y rubygems
-  gem install --no-ri --no-rdoc puppet
+  yum install -y git rubygems
+  gem install --no-ri --no-rdoc -v '~> 2.7.20' puppet
   useradd --system --user-group --no-create-home --uid 52 puppet
 
 As myself

@@ -1,11 +1,11 @@
 class vagrant {
 
   if $::virtual == 'physical' {
-    if !defined( Package['VirtualBox'] ) { package { 'VirtualBox': ensure  => installed } }
-    if !defined( Package['akmod-VirtualBox'] ) {
-      package { 'akmod-VirtualBox':
+    if !defined( Package['akmod-VirtualBox'] ) { package { 'akmod-VirtualBox': ensure  => installed } }
+    if !defined( Package['VirtualBox'] ) {
+      package { 'VirtualBox':
         ensure  => installed,
-        require => Package['VirtualBox'],
+        require => Package['akmod-VirtualBox'],
       }
     }
 

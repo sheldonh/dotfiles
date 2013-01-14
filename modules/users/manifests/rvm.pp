@@ -28,6 +28,9 @@ define users::rvm($home = "/home/$name", $gems = []) {
     creates  => "$home/.rvm",
   }
 
+  if defined(File["${user}-bashrc"]) { Exec[$install] { require +> File["${user}-bashrc"], } }
+  if defined(File["${user}-bash_profile"]) { Exec[$install] { require +> File["${user}-bash_profile"], } }
+
   users::gem { $gems:
     user    => $user,
     home    => $home,

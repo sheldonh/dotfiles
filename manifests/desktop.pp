@@ -15,6 +15,7 @@ include rpmfusion::nonfree
 include skype
 include vagrant
 include vpn::hetzner
+include yum
 
 package { 'ack': ensure => installed }
 package { 'clusterssh': ensure => installed }
@@ -150,7 +151,7 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
 
 users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s', 'sheldonh/git-ksshaskpass' ]: }
 
-rubymine::user { 'sheldonh': }
+#rubymine::user { 'sheldonh': }
 
 # Services that slow the boot process for no benefit to me
 service { [ 'iscsi', 'iscsid', 'sendmail' ]: enable => false }

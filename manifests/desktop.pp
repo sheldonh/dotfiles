@@ -110,6 +110,7 @@ users::rpmbuild { 'sheldonh': }
 users::rvm { 'sheldonh': gems => [ 'cheat', 'gist' ] }
 users::dotfiles { 'sheldonh':
   files => [
+    'ackrc',
     'bash_profile',
     'bashrc',
     'bundle/config',

@@ -1,27 +1,21 @@
 #!/bin/sh
 
-# TODO: zero-pad minor and build / watch out for transition to 10
-
 # To determine major, minor and build, start at http://www.oracle.com/technetwork/java/javase/downloads/index.html
 major=7
-minor=9
-build=05
+minor=11
+build=21
 update=${major}u${minor}
 rpm=jdk-${major}u${minor}-linux-x64.rpm
 url=http://download.oracle.com/otn-pub/java/jdk/${update}-b${build}/${rpm}
-jdk=jdk1.${major}.0_0${minor}
-jdk_pkg=jdk-1.${major}.0_0${minor}
+jdk=jdk1.${major}.0_${minor}
+jdk_pkg=jdk-1.${major}.0_${minor}
 
 check() {
-        local name=$1
+        local link=$1
 	local path=$2
 
-	if [ $(lsb_release -rs) = 18 ]; then
-		return 0
-	else
-		alternatives --display $name | grep -Fq "link currently points to $path"
-		return $?
-	fi
+	readlink -f $link 2>/dev/null | grep -Fq $path
+	return $?
 }
 
 alternative() {
@@ -31,15 +25,15 @@ alternative() {
 	local priority=$4
 
 
-	if ! check $name $path; then
+	if ! check $link $path; then
 		alternatives --install $link $name $path $priority
 		alternatives --set $name $path
 	fi
 }
 
 if [ "$1" = "check" ]; then
-	java=/usr/java/$jdk/jre/bin/java
-	if [ -x $java ] && check java /usr/java/$jdk/jre/bin/java; then
+	java=/usr/java/latest/jre/bin/java
+	if [ -x $java ] && check /usr/bin/java /usr/java/latest/jre/bin/java; then
 		exit 0
 	else
 		exit 1
@@ -58,13 +52,11 @@ if ! rpm -qa | grep -q ^$jdk_pkg; then
 fi
 
 
-if [ $(lsb_release -rs) != 18 ]; then
-	alternative /usr/bin/java java /usr/java/$jdk/jre/bin/java 20000
-	alternative /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 \
-		/usr/java/$jdk/jre/lib/amd64/libnpjp2.so 20000
-	alternative /usr/bin/javaws javaws /usr/java/$jdk/bin/javaws 20000
-	alternative /usr/bin/javac javac /usr/java/$jdk/bin/javac 20000
-	alternative /usr/bin/jar jar /usr/java/$jdk/bin/jar 20000
-fi
+alternative /usr/bin/java java /usr/java/latest/jre/bin/java 20000
+alternative /usr/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 \
+	/usr/java/latest/jre/lib/amd64/libnpjp2.so 20000
+alternative /usr/bin/javaws javaws /usr/java/latest/bin/javaws 20000
+alternative /usr/bin/javac javac /usr/java/latest/bin/javac 20000
+alternative /usr/bin/jar jar /usr/java/latest/bin/jar 20000
 
 exit 0

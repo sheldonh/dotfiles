@@ -7,6 +7,7 @@ include google_talk
 include chrome
 include java
 include kerberos
+include media::flash
 include media::mp3
 include media::pdf
 include mongodb

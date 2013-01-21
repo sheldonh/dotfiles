@@ -1,3 +1,5 @@
+Use curl or install wget before using wget
+
 Figure out how to configure apps to use a dictionary from hunspell-en
 	* empathy
 

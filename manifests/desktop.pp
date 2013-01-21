@@ -24,6 +24,7 @@ package { 'firefox': ensure => installed }
 package { [ 'git', 'gitk' ]: ensure => installed }
 package { 'graphviz': ensure => installed }
 package { 'haskell-platform': ensure => installed }
+package { 'hexchat': ensure => installed }
 package { 'hlint': ensure => installed }
 package { 'iotop': ensure => installed }
 package { 'links': ensure => installed }

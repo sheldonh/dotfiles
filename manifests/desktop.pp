@@ -14,7 +14,10 @@ include mongodb
 include mysql
 include rpmfusion::nonfree
 include skype
-include vagrant
+class { 'vagrant':
+  host_address   => '10.0.0.1/24',
+  host_interface => 'vboxnet0',
+}
 include vpn::hetzner
 include yum
 
@@ -104,7 +107,7 @@ if $domain == 'hearnlan' {
 }
 
 user { 'sheldonh':
-  groups  => ['wheel', 'dialout', 'wireshark'],
+  groups  => ['wheel', 'dialout', 'vboxusers', 'wireshark'],
   require => Package['wireshark-gnome'],
 }
 

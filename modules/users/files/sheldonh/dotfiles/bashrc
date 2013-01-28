@@ -12,6 +12,11 @@ if ! type -p __gitdir; then
 		. /etc/bash_completion
 	fi
 fi
+if ! type -p __git_ps1; then
+	if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
+		. /usr/share/git-core/contrib/completion/git-prompt.sh
+	fi
+fi
 
 function setps1()
 {

@@ -108,7 +108,7 @@ if $domain == 'hearnlan' {
 }
 
 user { 'sheldonh':
-  groups  => ['wheel', 'dialout', 'vboxusers', 'wireshark'],
+  groups  => ['wheel', 'dialout', 'pulse', 'pulse-access', 'vboxusers', 'wireshark'],
   require => Package['wireshark-gnome'],
 }
 

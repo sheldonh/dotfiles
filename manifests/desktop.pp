@@ -43,6 +43,7 @@ package { 'sipcalc': ensure => installed }
 package { 'strace': ensure => installed }
 package { 'swaks': ensure => installed }
 package { 'telnet': ensure => installed }
+package { 'tmux': ensure => installed }
 package { 'unrar': ensure  => installed }
 package { 'vim-command-t': ensure => installed }
 package { 'vim-enhanced': ensure => installed }

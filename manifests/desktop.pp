@@ -52,8 +52,8 @@ package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
 package { 'yum-plugin-fastestmirror': ensure => installed }
 
-#nodejs::package { 'coffee-script': ensure => installed }
-#nodejs::package { ['mocha', 'should']: ensure => installed }
+nodejs::package { 'coffee-script': ensure => installed }
+nodejs::package { ['mocha', 'should']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
   include hetzner::aaapi

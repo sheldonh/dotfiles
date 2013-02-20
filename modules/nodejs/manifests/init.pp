@@ -1,12 +1,8 @@
 class nodejs {
 
-  exec { 'enable-nodejs-repo':
-    command => 'yum install -y http://nodejs.tchol.org/repocfg/fedora/nodejs-stable-release.noarch.rpm',
-    creates => '/etc/yum.repos.d/nodejs-stable.repo',
+  exec { 'install-nodejs':
+    command => 'yum install -y --enablerepo=updates-testing nodejs',
+    unless => 'rpm -q nodejs',
   }
-
-  package { 'nodejs-compat-symlinks': ensure => installed }
-
-  Exec['enable-nodejs-repo'] -> Package <| |>
 
 }

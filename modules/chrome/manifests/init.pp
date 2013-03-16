@@ -1,8 +1,15 @@
 class chrome {
 
-  exec { 'install-chrome':
-    command => 'yum install -y https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm',
-    creates => '/etc/yum.repos.d/google-chrome.repo',
+  file { '/etc/yum.repos.d/google-chrome.repo':
+    owner  => root,
+    group  => root,
+    mode   => '0644',
+    source => 'puppet:///modules/chrome/google-chrome.repo',
+  }
+
+  package { 'google-chrome-stable':
+    ensure => installed,
+    require => File['/etc/yum.repos.d/google-chrome.repo'],
   }
 
 }

@@ -9,7 +9,7 @@ include java
 include kerberos
 include media::flash
 include media::mp3
-include media::pdf
+#include media::pdf
 include mongodb
 include mysql
 include rpmfusion::nonfree
@@ -54,7 +54,7 @@ package { 'words': ensure => installed }
 package { 'yum-plugin-fastestmirror': ensure => installed }
 
 nodejs::package { 'coffee-script': ensure => installed }
-nodejs::package { ['mocha', 'should']: ensure => installed }
+nodejs::package { 'mocha': ensure => installed }
 
 if $domain == 'hetzner.africa' {
   include hetzner::aaapi

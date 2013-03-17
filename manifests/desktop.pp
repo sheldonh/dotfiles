@@ -14,10 +14,10 @@ include mongodb
 include mysql
 include rpmfusion::nonfree
 include skype
-class { 'vagrant':
-  host_address   => '10.0.0.1/24',
-  host_interface => 'vboxnet0',
-}
+#class { 'vagrant':
+#  host_address   => '10.0.0.1/24',
+#  host_interface => 'vboxnet0',
+#}
 include vpn::hetzner
 include yum
 

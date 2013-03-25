@@ -33,6 +33,7 @@ package { 'iotop': ensure => installed }
 package { 'lame': ensure => installed }
 package { 'links': ensure => installed }
 package { 'liveusb-creator': ensure => installed }
+package { 'moreutils': ensure => installed }
 package { 'mplayer': ensure => installed }
 package { 'net-tools': ensure => installed }
 package { 'pastebinit': ensure => installed }

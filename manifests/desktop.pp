@@ -135,7 +135,6 @@ users::dotfiles { 'sheldonh':
     'kde/share/apps/konsole/Solarized Dark.colorscheme',
     'kde/share/apps/konsole/Solarized Light.colorscheme',
     'local/share/applications/jetbrains-rubymine.desktop',
-    'netrc',
     'RubyMine40/config/colors/Solarized Dark.xml',
     'RubyMine40/config/colors/Solarized Light.xml',
     'ssh/config',
@@ -145,7 +144,7 @@ users::dotfile { ['kde/Autostart/ssh-add.sh', 'kde/env/gpgagent.sh', 'kde/shutdo
   user => sheldonh,
   mode => '0755',
 }
-users::dotfile { ['gistrc', 'trc']:
+users::dotfile { ['gistrc', 'netrc', 'trc']:
   user => sheldonh,
   mode => '0600',
 }

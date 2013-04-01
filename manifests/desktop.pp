@@ -111,8 +111,15 @@ if $domain == 'hearnlan' {
 }
 
 user { 'sheldonh':
-  groups  => ['wheel', 'dialout', 'pulse', 'pulse-access', 'vboxusers', 'wireshark'],
+  groups  => ['wheel', 'dialout', 'pulse', 'pulse-access', 'wireshark'],
   require => Package['wireshark-gnome'],
+}
+
+# Ugh. It's a bit crap that this can't be done in the vagrant module.
+if $::virtual == 'physical' {
+  User['sheldonh'] {
+    groups +> 'vboxusers',
+  }
 }
 
 users::dropbox { 'sheldonh': }

@@ -167,7 +167,7 @@ file { '/home/sheldonh/.rvm/hooks/after_cd':
   require => Users::Rvm['sheldonh'],
 }
 
-users::script { [ 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s', 'sheldonh/git-ksshaskpass' ]: }
+users::script { [ 'sheldonh/hub', 'sheldonh/push-gems', 'sheldonh/rump-prep', 'sheldonh/s', 'sheldonh/git-ksshaskpass' ]: }
 
 #rubymine::user { 'sheldonh': }
 

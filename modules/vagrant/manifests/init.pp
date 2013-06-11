@@ -11,8 +11,8 @@ class vagrant($host_address = false, $host_interface = false) {
 
     # As of puppet-2.7.13, the yum provider doesn't support the source package parameter.
     exec { 'install-vagrant':
-      command => 'yum install -y http://files.vagrantup.com/packages/be0bc66efc0c5919e92d8b79e973d9911f2a511f/vagrant_1.0.5_x86_64.rpm',
-      creates => '/opt/vagrant/bin/vagrant',
+      command => 'yum install -y http://files.vagrantup.com/packages/7e400d00a3c5a0fdf2809c8b5001a035415a607b/vagrant_1.2.2_x86_64.rpm',
+      unless  => 'rpm -qa | grep vagrant-1.2.2',
       require => Package['VirtualBox'],
     }
 

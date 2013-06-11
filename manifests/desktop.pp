@@ -14,10 +14,6 @@ include mongodb
 include mysql
 include rpmfusion::nonfree
 include skype
-#class { 'vagrant':
-#  host_address   => '10.0.0.1/24',
-#  host_interface => 'vboxnet0',
-#}
 include vpn::hetzner
 include yum
 
@@ -65,6 +61,11 @@ if $domain == 'hetzner.africa' {
   include hetzner::password_resetter
   include hetzner::regprox
 
+  class { 'vagrant':
+    host_address   => '10.0.0.1/24',
+    host_interface => 'vboxnet0',
+  }
+
   package { 'gmpc': ensure => installed }
 
   mount::cifs { '/media/linsh/stuff':
@@ -110,15 +111,16 @@ if $domain == 'hearnlan' {
   }
 }
 
-user { 'sheldonh':
-  groups  => ['wheel', 'dialout', 'pulse', 'pulse-access', 'wireshark'],
-  require => Package['wireshark-gnome'],
-}
-
-# Ugh. It's a bit crap that this can't be done in the vagrant module.
 if $::virtual == 'physical' {
-  User['sheldonh'] {
-    groups +> 'vboxusers',
+  user { 'sheldonh':
+    groups  => ['wheel', 'dialout', 'pulse', 'pulse-access', 'wireshark'],
+    require => Package['wireshark-gnome'],
+  }
+} else {
+  # Ugh. It's a bit crap that this can't be done in the vagrant module.
+  user { 'sheldonh':
+    groups  => ['wheel', 'dialout', 'pulse', 'pulse-access', 'vboxusers', 'wireshark'],
+    require => Package['wireshark-gnome'],
   }
 }
 

@@ -10,8 +10,6 @@ if [ ! -f .ssh/id_dsa_rump -o ! -f .ssh/id_dsa_rump.pub ]; then
 	exit 1
 fi
 
-ssh ${host} "gem install --no-ri --no-rdoc rump"
-ssh ${host} "ln -fs /var/lib/gems/1.8/bin/rump /usr/local/bin/"
 ssh ${host} "aptitude install -y git-core"
 
 tmpdir=$(mktemp -t -d rump-prep.XXXXXX)

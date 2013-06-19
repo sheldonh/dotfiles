@@ -6,8 +6,8 @@ class vpn::hetzner {
   $home  = "/home/$user"
   $label = 'Hetzner'
   $ca    = 'ca.crt'
-  $cert  = 'sheldonh.crt'
-  $key   = 'sheldonh.key'
+  $cert  = 'sheldon.hearn.crt'
+  $key   = 'sheldon.hearn.key'
 
   $certs = "$home/.cert"
 

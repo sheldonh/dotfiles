@@ -49,6 +49,7 @@ package { 'vim-enhanced': ensure => installed }
 package { 'whois': ensure => installed }
 package { 'wireshark-gnome': ensure => installed }
 package { 'words': ensure => installed }
+package { 'xorg-x11-fonts-misc': ensure => installed }
 package { 'yum-plugin-fastestmirror': ensure => installed }
 
 nodejs::package { ['coffee-script', 'browserify', 'grunt-cli', 'mocha']: ensure => installed }

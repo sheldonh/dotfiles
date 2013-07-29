@@ -2,16 +2,14 @@ class java {
 
   include wget
 
-  file { '/usr/local/bin/install-oracle-jdk':
-    owner  => root,
-    group  => root,
-    mode   => 0755,
-    source => 'puppet:///modules/java/install-oracle-jdk',
-  }
+  package { 'java-1.8.0-openjdk-devel': ensure => installed }
 
-  exec { 'install-oracle-jdk':
-    command => '/usr/local/bin/install-oracle-jdk',
-    unless  => '/usr/local/bin/install-oracle-jdk check',
+  $javabin = '/usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/java'
+
+  exec { 'use-java-1.8.0-openjdk':
+    command => "alternatives --set java $javabin",
+    unless  => "alternatives --display java | grep -Fq 'link currently points to $javabin'",
+    require => Package['java-1.8.0-openjdk-devel'],
   }
 
 }

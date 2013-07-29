@@ -1,6 +1,6 @@
 class mysql {
 
-  package { 'mysql-server': ensure => installed }
+  package { 'mariadb-server': ensure => installed }
 
   service { 'mysqld':
     enable => false,

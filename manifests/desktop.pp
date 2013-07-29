@@ -52,7 +52,7 @@ package { 'words': ensure => installed }
 package { 'xorg-x11-fonts-misc': ensure => installed }
 package { 'yum-plugin-fastestmirror': ensure => installed }
 
-nodejs::package { ['coffee-script', 'browserify', 'grunt-cli', 'mocha']: ensure => installed }
+nodejs::package { ['coffee-script', 'grunt-cli', 'mocha']: ensure => installed }
 
 if $domain == 'hetzner.africa' {
   include hetzner::aaapi

@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if ! ip a l <%= host_interface %> >/dev/null 2>&1; then
+if ! ip a l <%= @host_interface %> >/dev/null 2>&1; then
 	VBoxManage hostonlyif create
 fi
 
-ip link set dev <%= host_interface %> up
+ip link set dev <%= @host_interface %> up
 
-if ! ip address list dev <%= host_interface %> | grep -Fq <%= host_address %>; then
-	ip address add <%= host_address %> dev <%= host_interface %>
+if ! ip address list dev <%= @host_interface %> | grep -Fq <%= @host_address %>; then
+	ip address add <%= @host_address %> dev <%= @host_interface %>
 fi

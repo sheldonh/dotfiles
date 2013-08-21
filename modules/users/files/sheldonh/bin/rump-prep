@@ -10,7 +10,7 @@ if [ ! -f .ssh/id_dsa_rump -o ! -f .ssh/id_dsa_rump.pub ]; then
 	exit 1
 fi
 
-ssh ${host} "aptitude install -y git-core"
+ssh ${host} "aptitude install -y git-core" || true
 
 tmpdir=$(mktemp -t -d rump-prep.XXXXXX)
 scp puppetmaster1.cpt1.host-h.net:/root/rump-prep.tar ${tmpdir}/

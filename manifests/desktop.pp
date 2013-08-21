@@ -18,6 +18,7 @@ include vpn::hetzner
 include yum
 
 package { 'ack': ensure => installed }
+package { 'aggregate': ensure => installed }
 package { 'clusterssh': ensure => installed }
 package { 'firefox': ensure => installed }
 package { [ 'git', 'gitk' ]: ensure => installed }

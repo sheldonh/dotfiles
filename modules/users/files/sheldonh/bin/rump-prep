@@ -31,5 +31,5 @@ rm -rf ${tmpdir}
 ssh ${host} "chown ${user} /home/${user}/rump-prep.tar"
 ssh ${host} "su -l ${user} -c 'tar -xf rump-prep.tar .gitconfig .ssh'"
 ssh ${host} "rm -rf /home/${user}/puppet"
-ssh ${host} "su -l ${user} -c 'git clone sheldonh@vcs.hetzner.co.za:/srv/git/puppet'"
+ssh ${host} "su -l ${user} -c 'git clone git@github.hetzner.co.za:hetznerZA/puppet'"
 ssh ${host} "su -l ${user} -c 'tar -xf rump-prep.tar puppet'"

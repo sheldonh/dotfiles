@@ -137,6 +137,7 @@ users::dotfiles { 'sheldonh':
     'bundle/config',
     'config/gmpc/gmpc.cfg',
     'config/gmpc/profiles.cfg',
+    'emacs.d/init.el',
     'gemrc',
     'gitconfig',
     'gitignore',

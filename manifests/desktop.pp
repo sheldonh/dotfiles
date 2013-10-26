@@ -3,6 +3,7 @@ Exec {
   timeout => 0,
 }
 
+include ansible
 include google_talk
 include chrome
 include java

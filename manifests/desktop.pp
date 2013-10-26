@@ -159,6 +159,12 @@ users::dotfile { 'rvm/hooks/after_cd_setps1':
   require => Users::Rvm['sheldonh'],
 }
 
+# Favor developer convenience over security
+
+users::dotfile { 'ansible.cfg':
+  user => sheldonh,
+}
+
 file { '/home/sheldonh/.rvm/hooks/after_cd':
   mode    => '0755',
   require => Users::Rvm['sheldonh'],

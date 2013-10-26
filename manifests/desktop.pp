@@ -88,19 +88,10 @@ if $domain == 'hetzner.africa' {
 }
 if $domain == 'hearnlan' {
 
-  # Just a liiiittle work at home
-  include hetzner::regprox
-
-  if $hostname == 'wrink' {
+  if $hostname == 'wrox' {
     mount::ntfs { '/media/windows':
       device => '/dev/sda2',
     }
-  }
-
-  mount::cifs { '/media/fatboy/public':
-    user       => 'pcguest',
-    device     => '//fatboy/public',
-    credential => 'fatboy'
   }
 
   include cups::canon_ufr2
